@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --text: hsl(136, 94%, 94%);
+            --background: hsl(131, 94%, 7%);
+            --background-sub: hsl(131, 94%, 15%);
+            --primary: hsl(131, 92%, 71%);
+            --secondary: hsl(199, 92%, 34%);
+            --accent: hsl(226, 92%, 57%);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box; 
+        }
+
+        /* GLOBAL */
+        body {
+            background-color: var(--background);
+            color: var(--text);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .button {
+            padding: 10px;
+
+            background-color: var(--accent);
+            color: var(--text);
+            text-transform: capitalize;
+            font-weight: bold;
+            font-size: 20px;
+            border: solid 2px var(--secondary);
+            border-radius: 8px;
+        }
+
+        /* LOCAL */
+
+        /* haeder */
+        .header-layout {
+            margin: 20px;
+            padding: 20px 70px;
+        }
+
+        header {
+            background-color: var(--background-sub);
+            font-size: 25px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-flex-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        nav a {
+            color: var(--text);
+        }
+
+        /* section */
+        .deskripsi-layout {
+            max-width: 1800px;
+            margin: auto;
+            margin-bottom: 40px;
+            padding: 30px;
+        }
+
+        .deskripsi-card {
+            background-color: var(--background-sub);
+            border-radius: 8px;
+            font-size: 30px;
+        }
+
+        .deskripsi-flex {
+            display: flex;
+            gap: 50px;
+        }
+
+        .deskripsi-flex-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+
+            text-align: justify;
+        }
+
+        .deskripsi-flex-content-button {
+            display: flex;
+        }
+
+        .deskripsi-img {
+            width: 700px;
+            height: auto;
+
+            border-radius: 8px;
+        }
+
+        /* program */
+
+        .program-card {
+            height: 700px;
+            padding: 20px;
+            align-items: center;
+
+            background-color: var(--background-sub);
+            font-size: 25px;
+            text-align: justify;
+            border-radius: 8px;
+        }
+
+        .program-flex {
+            display: flex;
+            max-width: 1800px;
+            margin: auto;
+            height: 500px;
+            gap: 40px;
+            
+        }
+
+        .program-img {
+            width: 400px;
+            height: auto;
+            margin: 10px;
+            border-radius: 8px;
+
+        }
+
+
+
+
+        /* UTILITY */
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-layout header-flex">
+        <div class="header-flex-content">
+            <img class="header-logo" src="assets/img/logo.png" alt="">
+            <p>GO BLOG</p>
+        </div>
+
+        <nav class="header-flex-content">
+            <a href="">Menu</a>
+            <a href="">Pengaturan</a>
+            <a href="">Exit</a>
+        </nav>
+    </header>
+
+    <br>
+    <br>
+    <br>
+
+    <main>
+        <!-- deskripsi -->
+        <section class="deskripsi-layout deskripsi-card deskripsi-flex">
+            <div class="deskripsi-flex-content">
+                <p>
+                    kamal never die adalah Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Deserunt blanditiis accusantium mollitia illo unde expedita omnis quae rem impedit cumque sapiente
+                    placeat, dicta rerum corrupti voluptatem laboriosam natus architecto corporis.
+                </p>
+                <br>
+                <br>
+                <br>
+
+                <div class="deskripsi-flex-content.button">
+                    <button class="button">masuk</button>
+                    <button class="button">keluar</button>
+                </div>
+            </div>
+
+            <img class="deskripsi-img" src="assets/img/logo.png" alt="">
+        </section>
+
+        <!-- program -->
+        <section class="program-flex">
+            <div class="program-card">
+                <div class="center">
+                    <img class="program-img" src="assets/img/html-dasar.png" alt="">
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, praesentium veritatis! Quod quisquam
+                    saepe officiis minus aliquam magni suscipit, eius mollitia? Quod numquam inventore vel modi porro
+                    perspiciatis quae esse.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <div class="center">
+                    <img class="program-img" src="assets/img/css-dasar.png" alt="">
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi obcaecati modi quos eveniet ipsum
+                    voluptatibus, odit tempore corrupti possimus asperiores nostrum hic similique, incidunt vel quod
+                    corporis. Eius, officia excepturi.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <div class="center">
+                    <img class="program-img" src="assets/img/js-dasar.png" alt="">
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum provident voluptatem unde alias
+                    recusandae maiores exercitationem voluptate sequi, reiciendis architecto et qui vero, error
+                    perferendis! Fuga ipsa explicabo laudantium quis?
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

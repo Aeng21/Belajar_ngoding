@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+h1 {
+    color: red;
+}
+
+#id {
+    color: red;
+}
+
+.class {
+    color: red;
+}
+
+h2, #banyak, .classjuga {
+    color: red;
+}
+
+a[target] {
+    columns: red;
+}
+
+a[target="_blank"] {
+    color: red;
+}
+
+[target="_blank"] {
+    color: red;
+}
+
+
+p[title~="belajar"] {
+    color: red;
+}
+/* 
+mengandung kata belajar murni.kalo nyatu kekgini dianggapnya bukan belajar.tapi belajarpemrograman
+<p title="belajar pemrograman">ini dipilih</p>
+<p title="belajarpemrograman">ini tidak dipilih</p>
+ */
+
+p[title|="belajar"] {
+    color: red;
+}
+/* 
+<p title="belajar pemrograman">ini dipilih</p>
+<p title="belajarpemrograman">ini tidak dipilih</p>
+<p title="belajar-pemrograman">ini dipilih</p>
+ */
+
+p[title^="belajar"] {
+    color: red;
+}
+/* 
+diawali kata belajar
+<p title="belajar pemrograman">ini dipilih</p>
+<p title="pemrograman belajar">ini tidak dipilih</p>
+ */
+
+p[title$="belajar"] {
+    color: red;
+}
+/* 
+diakhiri kata belajar
+<p title="belajar pemrograman">ini tidak dipilih</p>
+<p title="pemrograman belajar">ini dipilih</p>
+ */
+
+p[title*="belajar"] {
+    color: red;
+}
+/* 
+mengandung kata belajar mau dispasi atau tidak
+<p title="belajar pemrograman">ini dipilih</p>
+<p title="belajarpemrograman">ini dipilih</p>
+ */
+
+
+
+    </style>
+</head>
+<body>
+    <!-- div p -->
+     <div>
+        <article>
+            <p>ini dipilih</p>
+        </article>
+        <p>ini dipilih</p>
+     </div>
+     <p>ini tidak dipilih</p>
+
+     <!-- div > p -->
+      <div>
+        <article>
+            <p>ini tidak dipilih</p>
+        </article>
+        <p>ini dipilih</p>
+      </div>
+      <p>ini tidak dipilih</p>
+
+      <!-- div + p -->
+       <div>
+        <article>
+            <p>ini tidak dipilih</p>
+        </article>
+        <p>ini tidak dipilih</p>
+       </div>
+       <p>ini dipilih</p>
+       <p>ini tidak dipilih</p>
+
+       <!-- div ~ p -->
+        <div>
+        <article>
+            <p>ini tidak dipilih</p>
+        </article>
+        <p>ini tidak dipilih</p>
+       </div>
+       <p>ini dipilih</p>
+       <p>ini dipilih</p>
+
+       
+        
+    
+</body>
+</html>

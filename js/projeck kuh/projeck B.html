@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = []
+        user.push({nama : "kamal", umur : 22, status : "aktif"},
+                {nama : "riko", umur : 16, status : "aktif"},
+                {nama : "saepul", umur : 21, status : "tidak aktif"}
+                )
+        let inNama,inUmur,inStatus
+                let lanjut = confirm("apakah kamu akan lanjut mengelola data?")
+                if (lanjut) {
+                    let lanjut3 = confirm("apakah kamu ingin menambahkan data baru?")
+                    if (lanjut3) {
+                        inNama = prompt ("masukan nama");
+                        inUmur = prompt ("masukan umur");
+                        inStatus = prompt ("masukan status (aktif/tidak aktif)");
+                        user.push({nama: inNama, umur: inUmur, status : inStatus});
+
+                        let syaratUmur = inUmur >= 17
+                        let syaratStatus = inStatus == "aktif"
+                        
+                        let logika = syaratUmur && syaratStatus
+                        if (logika) {
+                            alert ("user boleh daftar");
+                        } else {
+                            alert ("user tidak boleh daftar")
+                        }
+
+                        
+                    } else {
+                        alert ("refress halaman untuk kembali ke awal")
+                    }
+
+                } else {
+                    alert ("sampai jumpa kalau begitu")
+                }
+
+                user[0].nama = "aeng"
+                delete user[2].umur
+                console.table(user)
+    </script>
+</body>
+</html>

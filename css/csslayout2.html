@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* align-content */
+    .container {
+        display: flex;
+        height: 1000px;
+        flex-wrap: wrap;
+        /*untuk mengatur penempatan flex-wrapnya(vertikal khusus wrap)*/
+         align-content: flex-end;
+        /* saat menggunakan flex disarankan pake gap bukan margin */
+        row-gap: 10px;
+        column-gap: 20px;
+    }
+
+    .content {
+        border: 5px solid black;
+        background-color: aqua;
+        width: 300px;
+        padding: 10px;
+    }
+
+
+    
+</style>
+<body>
+    <div class="container">
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi provident consequatur id magni, laboriosam inventore debitis! Unde, itaque deserunt ad qui id illum quaerat aspernatur impedit veniam quae. Praesentium, autem.</p>
+        </div>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi provident consequatur id magni, laboriosam inventore debitis! Unde, itaque deserunt ad qui id illum quaerat aspernatur impedit veniam quae. Praesentium, autem.</p>
+        </div>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi provident consequatur id magni, laboriosam inventore debitis! Unde, itaque deserunt ad qui id illum quaerat aspernatur impedit veniam quae. Praesentium, autem.</p>
+        </div>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi provident consequatur id magni, laboriosam inventore debitis! Unde, itaque deserunt ad qui id illum quaerat aspernatur impedit veniam quae. Praesentium, autem.</p>
+        </div>
+
+    </div>
+    
+</body>
+</html>

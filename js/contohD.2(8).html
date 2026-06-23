@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function br(){
+            document.writeln("</br>")
+        }
+
+        document.writeln("level1")
+        br()
+        //lvl1
+        for(let i=1;i <=10;i++){
+            document.writeln(i)
+        }
+        br()
+
+        for(let i=1;i <=30;i++){
+            if (i % 2 == 1){
+                continue
+                
+            }
+           document.writeln(i) 
+        }
+
+        br()
+
+        for (let i=10;i > 0;i--){
+            document.writeln(i)
+        }
+        br()
+
+        //lvl2
+        document.writeln("level2")
+        br()
+        let i = 1
+        while (i <=5) {
+            document.writeln(i)
+            i++
+        }
+        br()
+
+        let j = 5
+        while (j >= 1) {
+            document.writeln(j)
+            j--
+        }
+        br()
+
+        let k = 0
+        while (k < 30) {
+            k++
+            if(k % 2 == 1) {
+                continue
+                
+            }
+            document.writeln(k)
+            
+            
+        }
+        br()
+
+
+        //lvl3
+        document.writeln("level3")
+        br()
+
+        let l = 0
+        while(l <= 10){
+            
+            if (l === 5){
+                l++
+                continue
+            }
+            
+            if (l === 7){
+                break
+            }
+            document.writeln(l)
+            l++
+        }
+
+        br()
+
+        //lvl4
+        document.writeln("level4")
+        br()
+
+        let angka= [10,20,30,40,50]
+        for (let i = 0;i < angka.length;i++){
+            document.writeln(angka[i])
+        }
+        br()
+
+        for(let valueAngka of angka){
+            document.writeln(valueAngka)
+        }
+        br()
+
+        //lvl5
+        document.writeln("level5")
+        br()  
+        
+        let player = {
+            nama: "Hero",
+            health: 100,
+            attack: 20
+        }
+
+        for (let valuePlayer in player){
+            document.writeln(`<p>${valuePlayer} : ${player[valuePlayer]}</p>`)
+        }
+
+        br() 
+
+        //lvl6
+        document.writeln("level6")
+        br()
+
+        let enemies = [
+    {nama: "slime", health: 30, attack: 10},
+    {nama: "goblin", health: 50, attack: 15}
+    ]
+        
+        for(let valueEnemies of enemies){
+            document.writeln(`<p>nama : ${valueEnemies.nama} health : ${valueEnemies.health} attack : ${valueEnemies.attack}</p>`)
+        }
+        br()
+
+        //lvl7
+        document.writeln("level7")
+        br()
+
+        let enemy = {nama: "slime", health: 30}
+        let attack = 10
+
+            document.writeln(enemy.health)
+        while(enemy.health >= 0){
+                if (enemy.health <= 0){
+                    document.writeln(`health total : ${enemy.health} you die`)
+                    enemy.health-= attack
+                    break
+                }
+            
+            document.writeln(`<p>health total : ${enemy.health}</p>`)
+            enemy.health-= attack
+
+            }
+            br()
+
+
+     //lvl8
+    while(true){
+        let input = prompt ("masukan angka 1-10")
+        if (input == ""){
+            continue
+        }
+        input = parseInt(input)
+        if (input < 1 || input > 10 || Number.isNaN(input)){
+            continue
+        }
+
+        document.writeln("input yang ada masukan adalah : " + input)
+            break
+    }
+    //lvl9
+    //let player = {
+    //       nama: "Hero",
+    //       health: 100,
+    //       attack: 20
+    //    }
+
+    //let enemies = [
+    //{nama: "slime", health: 30, attack: 10},
+    //{nama: "goblin", health: 50, attack: 15}
+    //]
+    while(enemies[0].health > 0 && player.health > 0){
+        enemies[0].health -= player.attack
+        document.writeln("<p>player menyerang" + player.attack + "sisa hp enemies" + enemies[0].health + "</p>")
+        if(enemies[0].health <= 0){
+            document.writeln("pertarungan berakhir")
+            if (enemies[0].health > 0){
+                document.writeln("pemnenangnya adalah enemies")
+            } else {
+                document.writeln("pemenangnya adalah player")
+            }
+            break
+        }
+        player.health -= enemies[0].attack
+        document.writeln("<p>enemies menyerang" + enemies[0].attack + "sisa hp player" + player.health + "</p>")
+        if(player.health <= 0){
+            if (player.health > 0){
+                    document.writeln("pemnenangnya adalah player")
+                } else {
+                    document.writeln("pemenangnya adalah enemies")
+                }
+                break
+            }
+        }
+    br()
+
+    //lvl10
+    let mc = {
+        nama : "Pria Solo",
+        typer : "Fighter",
+        health : 120,
+        attack : 20
+    }
+
+    let musuh = [
+        {nama: "el - Rompi", health:50, attack:10},
+        {nama: "el - Lempar", health:30, attack:7},
+        {nama: "el - Etanol", health:20, attack:5}
+    ]
+
+    //ronde satu.
+    document.writeln("Ronde Satu")
+    br()
+    document.writeln(mc.nama + " VS " + musuh[0].nama)
+    br()
+    document.writeln(`${mc.nama} (HP: ${mc.health}), ${musuh[0].nama} (HP: ${musuh[0].health})`)
+    br()
+    let z = 0
+    while(mc.health > 0){
+        musuh[0].health -= mc.attack
+        z++
+        document.writeln(`pertarungan ke - ${z} ${mc.nama} (HP: ${mc.health}), ${musuh[0].nama} (HP: ${Math.max(0, musuh[0].health)})`)
+        br()
+        if (musuh[0].health <=0 || mc.health <= 0){
+            document.writeln(`${mc.health <= 0 ? mc.nama : musuh[0].nama} Kalah`)
+            break
+        }
+        mc.health -= musuh[0].attack
+        z++
+        document.writeln(`pertarungan ke - ${z} ${mc.nama} (HP: ${mc.health}), ${musuh[0].nama} (HP: ${Math.max(0, musuh[0].health)})`)
+        br()
+        if (musuh[0].health <=0 || mc.health <= 0){
+            document.writeln(`${mc.health <= 0 ? mc.nama : musuh[0].nama} Kalah`)
+            break
+        }
+        
+    }
+    br()
+    //ronde dua.
+    if (mc.health > 0){
+     document.writeln("Ronde Dua")
+    br()
+    document.writeln(mc.nama + " VS " + musuh[1].nama)
+    br()
+    document.writeln(`${mc.nama} (HP: ${mc.health}), ${musuh[1].nama} (HP: ${musuh[1].health})`)
+    br()
+    z = 0
+    }
+    while(mc.health > 0){
+        musuh[1].health -= mc.attack
+        z++
+        document.writeln(`pertarungan ke - ${z} ${mc.nama} (HP: ${mc.health}), ${musuh[1].nama} (HP: ${Math.max(0, musuh[1].health)})`)
+        br()
+        if (musuh[1].health <=0 || mc.health <= 0){
+            document.writeln(`${mc.health <= 0 ? mc.nama : musuh[1].nama} Kalah`)
+            break
+        }
+        mc.health -= musuh[1].attack
+        z++
+        document.writeln(`pertarungan ke - ${z} ${mc.nama} (HP: ${mc.health}), ${musuh[1].nama} (HP: ${Math.max(0, musuh[1].health)})`)
+        br()
+        if (musuh[1].health <=0 || mc.health <= 0){
+            document.writeln(`${mc.health <= 0 ? mc.nama : musuh[1].nama} Kalah`)
+            break
+        }
+        
+    }
+
+    br()
+    //ronde tiga.
+    if (mc.health > 0){
+     document.writeln("Ronde Tiga")
+    br()
+    document.writeln(mc.nama + " VS " + musuh[2].nama)
+    br()
+    document.writeln(`${mc.nama} (HP: ${mc.health}), ${musuh[2].nama} (HP: ${musuh[2].health})`)
+    br()
+    z = 0
+    }
+    while(mc.health > 0){
+        musuh[2].health -= mc.attack
+        z++
+        document.writeln(`pertarungan ke - ${z} ${mc.nama} (HP: ${mc.health}), ${musuh[2].nama} (HP: ${Math.max(0, musuh[2].health)})`)
+        br()
+        if (musuh[2].health <=0 || mc.health <= 0){
+            document.writeln(`${mc.health <= 0 ? mc.nama : musuh[2].nama} Kalah`)
+            break
+        }
+        mc.health -= musuh[2].attack
+        z++
+        document.writeln(`pertarungan ke - ${z} ${mc.nama} (HP: ${mc.health}), ${musuh[2].nama} (HP: ${Math.max(0, musuh[2].health)})`)
+        br()
+        if (musuh[2].health <=0 || mc.health <= 0){
+            document.writeln(`${mc.health <= 0 ? mc.nama : musuh[2].nama} Kalah`)
+            break
+        }
+        
+    }
+
+    </script>
+</body>
+</html>

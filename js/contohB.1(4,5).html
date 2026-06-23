@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //pop up
+        let verif = confirm ("apakah kamu mau melanjutkan verifikasi?")
+        if (verif) {
+            let nama = prompt ("masukan nama anda!")
+            alert (`hai ${nama}`)
+        } else {
+            alert(`selamat tinggal`)
+        }
+
+        //array
+        //const nama = []
+        //nama.push("tyrent")
+        //nama.push("william birkin")
+        //nama.push("nemesis")
+        //nama.length
+        //nama[0] = "tiren"
+        //delete nama[2]
+
+        //objeck
+        //const nama = {}
+        //nama["awal"] = "ahmad"
+        //nama["tengah"] = "musthafa"
+        //nama["akhir"] = "kamal"
+
+        //atau bisa juga
+        const nama = {
+        depan : "ahmad",
+        tengah : "musthafa",
+        akhir : "kamal"
+        }
+
+        //nampilin buat array
+        //console.info(`nama : ${nama[0]}`);
+
+        console.info(`nama : ${nama.depan}`)
+
+        console.table(nama);
+    </script>
+</body>
+</html>

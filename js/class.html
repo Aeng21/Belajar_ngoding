@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function br () {
+            document.writeln("</br>");
+        }
+
+        class Person {
+            constructor (nama, kelas) {
+                this.nama = nama;
+                this.kelas = kelas;
+            }
+            tampilkan () {
+                document.writeln(`nama : ${this.nama}, kelas : ${this.kelas}`);
+                document.writeln("</br>");
+            }
+        }
+
+        class PersonFull extends Person{
+            constructor (nama, kelas, alamat, jenkel) {
+            super(nama, kelas)
+            this.alamat= alamat;
+            this.jenkel= jenkel;
+            }
+            tampilkan () {
+                super.tampilkan()
+                document.writeln("</br>");
+                document.writeln(`nama : ${this.nama}, kelas : ${this.kelas} alamat : ${this.alamat}, jenkel : ${this.jenkel}`);
+                document.writeln("</br>");
+            }
+        }
+
+        const asep = new Person ("asep", "kelas 8");
+        const anang = new PersonFull ("anang", "kelas 9","cibogo", "lanang");
+
+        asep.tampilkan();
+        anang.tampilkan();
+        console.info(anang);
+
+
+        class Number {
+            #number = "7";
+        }
+
+        const bil1 = new Number ();
+        bil1.number = 10;
+        document.writeln(bil1.number);
+        console.info(bil1);
+    </script>
+</body>
+</html>

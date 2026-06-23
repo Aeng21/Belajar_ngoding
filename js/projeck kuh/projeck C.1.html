@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>system mob</title>
+</head>
+<body>
+    <script>
+        let mobs = [
+            {nama: "zombie", hostile: true, health: 20, biome: "plains"},
+            {nama: "cow", hostile: false, health: 10, biome: "plains"},
+            {nama: "enderman", hostile: true, health: 40, biome: "end"},
+        ];
+
+        //mulai program
+        let mulai = confirm ("mulai mob system?.")
+        if (mulai){
+            let pilih = prompt (`
+            silahkan pilih salah satu :
+            1. lihat semua mob
+            2. tambah mob
+            3. cek bahaya mob
+            4. keluar
+            `)
+
+            //pilihan menu
+            switch (pilih) {
+                case "1" :
+                    for (let i = 0;i < mobs.length;i++) {
+                    console.table(mobs[i]);
+                    }
+                    console.info(mobs.length)
+                    break
+                
+                case "2" :
+                    let nama = prompt ("masukan nama mob")
+                    nama = nama ?? "unknow mob"
+                    let host = prompt ("masukan jenis hostile (true/false)")
+                    let hostile = host === "true"
+                    let heal = prompt ("masukan kesehatan mob")
+                    let health = Number(heal)
+                    let biome = prompt ("masukan biome mob")
+
+                    mobs.push({nama, hostile, health, biome})
+                    console.table(mobs)
+
+                    break
+                
+                case "3" :
+                    let bahaya = prompt("masukan nama")
+                    let mobBahaya
+
+                    for (let i = 0;i < mobs.length;i++) {
+                        if (mobs[i].nama === bahaya) {
+                            mobBahaya = mobs[i]
+                        }
+
+                    }
+                    let syaratHostile1 = mobBahaya?.hostile === true
+                    let syaratHostile2 = mobBahaya?.hostile === false
+                    let syaratHealth1 = mobBahaya?.health >= 20
+                    let syaratHealth2 = mobBahaya?.health < 20
+                    let syarat1 = syaratHostile1 && syaratHealth1
+                    let syarat2 = syaratHostile2 && syaratHealth2
+                    alert (syarat1? "mob berbahaya" : syarat2? "mob tidak berbahaya" : "mob tidak ditemukan")
+                    break
+                
+                case "4" :
+                    alert ("selamat tinggal kalo begitu")
+                    break
+
+
+            }
+
+        } else {
+            alert ("selamat tinggal kalo begitu")
+        }
+    </script>
+</body>
+</html>

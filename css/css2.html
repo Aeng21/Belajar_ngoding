@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, tr, th, td {
+            border: solid 5px;
+            border-collapse: collapse; /* biar nyatu bordernya gak misah */
+        }
+
+        table {
+            width: 200px;
+            height: 200px;
+        }
+
+        th {
+            text-align: right;
+        }
+
+        td {
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: blue;
+        }
+
+        /* form */
+
+        #nama {
+            border: red double 10px;
+            border-radius: 10px;
+            background-color: aqua;
+        }
+
+        #nama:hover {
+            background-color: brown;
+        }
+
+        #submit {
+            border-radius: 20px;
+            border: 5px blue solid;
+        }
+
+        /* hanya bisa merubah text jadi img */
+        /* .content {
+            content: url(joks.png);
+            width: 400px;
+            height: auto;
+        } */
+
+        /* pseudo-element */
+        .content::before {
+            content: "ini dia >";
+        }
+        .content::after {
+            content: " < jadi gambar";
+        }
+
+        /* counter */
+        /* body {
+        counter-set: judul 0 subjudul 0;
+}
+
+        h1 {
+            counter-increment: judul 1;
+            counter-reset: subjudul;
+        }
+
+        h2 {
+            counter-increment: subjudul 1;
+        }
+
+        h1::before {
+            content: counter(judul) ". ";
+        }
+
+        h2::before {
+            content: counter(judul) "." counter(subjudul) ". ";
+        } 
+            gak tahu dari pak ekonya error eng*/
+
+        body {
+        counter-reset: judul;
+        }
+
+        h1 {
+            counter-increment: judul;
+            counter-reset: subjudul;
+        }
+
+        h2 {
+            counter-increment: subjudul;
+        }
+
+        h1::before {
+            content: counter(judul) ". ";
+        }
+
+        h2::before {
+            content: counter(judul) "." counter(subjudul) ". ";
+        }
+
+        /* filter/efek */
+        .filter {
+            filter: blur(5px);
+            width: 200px;
+        }
+
+        /* @import url(hello.css); 
+        import css cara lain selain pake link rel=*/
+
+
+
+
+
+
+
+
+        /* cascading css ambil aturan berurutan.
+        1. dari user agent stylesheet/ browser bawaan
+        2. author stylesheet / css sudah jadi buatan orang lain
+        3. author stylesheet / yang kita buat sendiri
+        */
+
+        /* !important supaya tidak bisa diganti aturannya oleh stylesheet selanjutnya(melabeli sangat penting) */
+        h6 {
+            color: red !important;
+            /* jadi gak bisa dirubah */
+        }
+
+        h6 {
+            color: blue;
+        }
+
+
+        /* menentukan mana yang lebih penting dan mana yang tidak dengan mengubah posisi layer
+        @layer yang lebih fleksibel dari important karna bisa  */
+        @layer b, a;
+         /* b dulu baru nanti ditimpa a */
+
+        @layer a {
+            h3 {
+                color: blue;
+            }
+        }
+
+        @layer b {
+            h3 {
+                color: red;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>nama</th>
+                <th>nilai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>kamal</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>kamal</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>kamal</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>kamal</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>kamal</td>
+                <td>20</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+
+
+    <form action="index.html">
+        <fieldset>
+            <legend>hallo aang</legend>
+            <label for="nama">nama
+                <input type="text" id="nama">
+            </label>
+
+            <label for="kelas">kelas
+                <input type="text" id="kelas">
+            </label>
+
+            <label for="submit">
+                <button type="submit" id="submit">save</button>
+            </label>
+        </fieldset>
+    </form>
+
+    <br>
+    <p class="content">ini asalnya text ygy</p>
+    <br>
+
+    <h1>judul</h1>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h1>judul</h1>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h1>judul</h1>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h1>judul</h1>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h1>judul</h1>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+    <h2>subjudul</h2>
+
+    <img src="joks.png" alt="filter" class="filter">
+
+    <h3>aku ingin terbang bebas</h3>
+
+</body>
+</html>

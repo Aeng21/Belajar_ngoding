@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let users = [
+            {nama: "kamal", umur: 22, role: "admin", aktif: true},
+            {nama: "riko", umur: 16, role: "user", aktif: true},
+            {nama: "saepul", umur: 21, role: "user", aktif: false}
+        ]
+
+        //pop up awal mulai system
+        let mulai = confirm("mulai sistem?")
+        if (mulai) {
+            let menu = prompt(`
+            1. lihat semua user
+            2. tambahkan user
+            3. cek kelayakan user
+            4. keluar
+            `)
+
+            //menu utama
+            switch (menu) {
+                case "1":
+                    for (let i = 0; i < users.length; i++) {
+                        console.table(users[i])
+                    }
+                    break
+
+                case "2":
+                    let nama = prompt("masukan Nama : ")
+                    nama = nama ?? "anonim"
+
+                    let um = prompt("masukan Umur : ")
+                    let umur = Number(um)
+
+                    let role = prompt("masukan Role : admin/user")
+                    let ak = prompt("masukan Status : true/false")
+                    let aktif = ak === "true"
+
+                    users.push({nama, umur, role, aktif})
+                    console.table(users)
+                    break
+
+                case "3":
+                    let cekKelayakan = prompt("masukan nama :")
+                    let userFound
+
+                    for (let i = 0; i < users.length; i++) {
+                        if (users[i].nama === cekKelayakan) {
+                            userFound = users[i]
+                            break
+                        }
+                    }
+
+                    // === OPTIONAL CHAINING VERSION (AMAN) ===
+                    let syaratUmur = userFound?.umur >= 17
+                    let syaratAktif = userFound?.aktif === true
+                    let roleUser = userFound?.role ?? "guest"
+
+                    let layak = syaratUmur && syaratAktif && roleUser !== "guest"
+
+                    alert(layak ? "user layak" : "user tidak layak")
+
+                    /*
+                    //cara aeng mengatasi ketidak tahuan
+                    let cekKelayakan = prompt ("masukan nama :")
+                    let umr
+                    let akt
+                    //buat dulu variabel umr dan akt nya diawal baru diganti ganti di if dan else nya.
+                    karna jika dibuat didalam if else nya maka variabelnya hanya berlaku disana.
+                    karena masing-masing variabel hidup di blok {} yang berbeda.
+                    //mereka tidak saling kenal
+                    if (cekKelayakan == "kamal") {
+                        umr = 22
+                        akt = true
+                    } else if (cekKelayakan == "riko"){
+                        umr = 16
+                        akt = true
+                    } else if (cekKelayakan == "saepul") {
+                        umr = 21
+                        akt = false
+                    } else {
+                        alert ("nama tidak ditemukan")
+                    }
+                    let syaratUmur = umr >= 17
+                    let syaratAktif = akt === true
+                    let syaratLayak = syaratUmur && syaratAktif
+
+                    alert(syaratLayak? "user layak" : "user tidak layak")
+                break
+                    
+                case "4":
+                    alert ("sistem dihentikan")
+                    */
+                    break
+            }
+
+        } else {
+            alert("selamat tinggal")
+        }
+
+        document.writeln(users[0].umur)
+        document.writeln("</br>")
+        document.writeln("role" in users[2])
+        document.writeln("</br>")
+
+    </script>
+</body>
+</html>

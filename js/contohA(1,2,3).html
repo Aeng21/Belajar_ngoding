@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //awoakowakow
+        document.writeln("hayang bisa ygy");
+        document.writeln("<br>");
+        document.writeln("ini type number" + 23 + " " + 0b0110 + " "  + 0o76152 + " "  + 0xabc3);
+        document.writeln("<br>");
+        document.writeln(true);
+        document.writeln("<br>");
+        document.writeln("<textarea rows=10 cols=40>")
+            document.writeln("\"and i close my eyes\"\n");
+            document.writeln("\tfeeling lighter and lighter\n");
+            document.writeln("\\this emptiness is killing me\\");
+        document.writeln("</textarea>")
+        document.writeln("<br>");
+        document.writeln("<br>");
+
+        //var
+        let aa = "Zezen"
+        let dede ="Usep"
+        let ummi ="Yuli"
+
+        document.writeln(aa +" " + dede +" "  + ummi);
+        document.writeln(`${aa} ${dede} ${ummi}`);
+        document.writeln("<br>");
+
+        //aritmatika
+        let aritmatika1 = 3
+        let aritmatika2 = 7
+        aritmatika2 +=2
+        let aritmatika3 = 4
+        aritmatika3 = aritmatika3 + 6
+
+        document.writeln(3);
+        document.writeln("<br>");
+        document.writeln(`3 + 3 =` + (3 + 3));
+        document.writeln("<br>");
+        document.writeln(`3 + 9 =` + (aritmatika1 + aritmatika2));
+        document.writeln("<br>");
+        document.writeln(3**3);
+        document.writeln("<br>");
+        document.writeln(aritmatika3);
+        document.writeln(`3 + 3 =` + 3 + 3);
+        document.writeln("<br>");
+        document.writeln(-3);
+        document.writeln("<br>");
+
+        let aritmatika4 = 5
+        aritmatika4 = ++aritmatika4
+        aritmatika4 = ++aritmatika4
+
+        document.writeln(aritmatika4);
+        document.writeln("</br>");
+
+        //perbandingan simple
+        let perbandingan1 = 5 > 7
+        let perbandingan2 = 5 < 7 
+        document.writeln("5 > 7" + perbandingan1)
+        document.writeln("</br>")
+        document.writeln("5 < 7" + perbandingan2)
+        document.writeln("</br>")
+
+        //logika
+        let nilaiUts = 70
+        let nilaiUas = 80
+
+        let uts = nilaiUts >= 70
+        let uas = nilaiUas >= 70
+
+        let lulus = uts && uas
+
+        document.writeln("uts 70 uas 80 :" + lulus)
+        document.writeln("</br>")
+
+        //komplek
+        let a = 1
+        let b = 5
+
+        let banding1 = a > b
+        let banding2 = a < b
+        let banding3 = a == b
+        let banding4 = a != b
+
+        let betul = "benar"
+        let xalah = "salah"
+
+        document.writeln(`1 > 5 = ${banding1? betul : xalah}`);
+        document.writeln("</br>");
+        document.writeln(`1 < 5 = ${banding2? betul : xalah}`);
+        document.writeln("</br>");
+        document.writeln(`1 = 5 = ${banding3? betul : xalah}`);
+        document.writeln("</br>");
+        document.writeln(`1 != 5 = ${banding4? betul : xalah}`);
+        document.writeln("</br>");
+
+        //console
+        let aku = "kamal"
+        let kamu = "kupu"
+        console.info("hayang ngopi");
+        console.warn("hati hati turu");
+        console.error("awas tabu")
+        console.table(aku, kamu);
+
+        let multiString =`kesan indah pertama,
+        kau datang seolah cinta,
+        dengan senang hati aku menerima`;
+
+        document.writeln(multiString)
+        document.writeln("</br>")
+
+        //conversi type data
+        let konv1 = "1.1"
+        let konv2 = "2.1"
+        let konv3 = "3.1"
+        let konv4 = "4.1"
+        let konv5 = "5.1"
+        document.writeln(`${parseInt(konv1)}`);
+        document.writeln("</br>")
+        document.writeln(`${parseFloat(konv2)}`);
+        document.writeln("</br>")
+        document.writeln(`${Number(konv3)}`);
+        document.writeln("</br>")
+        document.writeln(`${konv4.toString()}`);
+        document.writeln("</br>")
+
+        document.writeln(`${parseInt("bukanNo")}`)
+        document.writeln("</br>")
+        document.writeln(`${isNaN("salah")}`)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function br() {
+            document.writeln ("</br>")
+        }
+        
+        //function
+        function gila (){
+            document.writeln("</p>" + "gila gila gila gila gila gila giLAGI?" + "</p>")
+        }
+        gila()
+        gila()
+        gila()
+
+        //function farameter
+        function namaAeng(awal, tengah, akhir){
+            document.writeln(`<p>${awal} ${tengah} ${akhir}</p>`)
+        }
+        namaAeng()
+        namaAeng("Ahmad", "Musthafa", "kamal")
+        namaAeng()
+        namaAeng("Purple", "Emperor", "Rose")
+        namaAeng()
+        document.writeln("</br>")
+
+        //function return value
+        function nilai(Nilai){
+            let tampungNilai = `nilai kamu${Nilai}`
+            return tampungNilai
+        }
+
+        let nilaiIpk = nilai (90)
+        document.writeln(nilaiIpk)
+        document.writeln("</br>")
+
+        //return lebih dari satu dengan kondisi.
+        function hasilIpk (ipk) {
+            if (ipk >= 90) {
+                return "A"
+            }else if (ipk >= 80) {
+                return "B"
+            } else if (ipk >=70) {
+                return "C"
+            } else {
+                return "D"
+            }
+        }
+
+        let IPK = hasilIpk(90)
+        document.writeln(IPK)
+        document.writeln("</br>")
+
+
+        //menghentikan function dengan return
+        let array = [24,77,25,87,10,50,76]
+
+        function mencariAngka (find) {
+            for (let mencariArray of array) {
+                if (mencariArray === find) {
+                    return "angka ada"
+                }
+            }
+        return "angka gak ada"
+        }
+        let output = mencariAngka(10)
+        document.writeln(output)
+        document.writeln("</br>")
+
+        //optional parameter
+        //kalo kurang tidak error (makhluk tidak diisi)
+        function optional(aeng, makhluk){
+            document.writeln(`${aeng} ${makhluk}`)
+        }
+        optional("kamal")
+
+        //kalo lebih gak error cuma gak muncul ("jago banget gak muncul")
+        function opti(aeng, skill,tingkat){
+            document.writeln(`<p>${aeng} ${skill} ${tingkat}</p>`)
+        }
+        opti("kamal", "ngarang", "hebat", "jago banget")
+
+        //default value parameter
+        function def(nama= "unknow name", kelas= "unknow class"){
+            document.writeln(`<p>${nama} ${kelas}</p>`)
+        }
+        def()
+
+        //rest parameter(memasukan data ke parameter yang otomatis jadi array)
+        function autoArray(nama, ...array){
+            console.info(nama)
+            console.table(array)
+        }
+
+        autoArray("kamal", 2,7,8,4,8,9,2)
+
+        //spread syntax (memasukan array ke parameter)
+        /*pada dasarnya function itu bisa menerima array langsung.
+        namun jika kamu ingin memasukan array ke dalam rest parameter,
+        maka kamu harus pake cara seperti ini.
+        */
+        function arRay(name, ...arraY){
+            console.info(name)
+            console.table(arraY)
+        }
+
+        let numBer = [2,4,7,9,10];
+
+        arRay("aeng",...numBer)
+
+        //tanpa rest parameter ,masukin array langsung
+        function Ar(array){
+            console.table(array)
+        }
+        const NoWa = [895,897,891,817]
+
+        Ar(NoWa)
+
+        //function sebagai value
+        //lewat variabel
+        function vari(nama){
+            document.writeln(`<p>halo babang ${nama}</p>`)
+        }
+        vari("kmal")
+        let masukVari= vari
+        masukVari("Amal")
+
+        //lewat parameter
+        //memasukan function vari
+        function para(tempatFunc){
+            tempatFunc("koko")
+        }
+
+        para(vari)
+
+        //anonymous function
+        //lewat variabel
+        let anonim = function (nama){
+            document.writeln(`<p>bro ${nama}</p>`)
+        }
+        anonim("Aeng")
+
+        //lewat parameter
+        //lewat function anonim
+        function anonimus(ano){
+            ano("AAAeng")
+        }
+
+        anonimus(function(asu){
+            document.writeln(`<p>halo ${asu}</p>`)
+        })
+        
+
+        //function dalam function
+        function luar(){
+            document.writeln(`<p>luar</p>`)
+            function dalam(){
+                document.writeln(`<p>dalam</p>`)
+            }
+            dalam()//muncul karna discope lokal
+        }
+        
+        luar()
+        //dalam()//gak muncul kalo discope global(error malahan)
+
+        //scope
+        //ini global
+        let dataLuar = "ini diluar"
+        document.writeln(`<p>${dataLuar}</p>`)
+
+        function lokal(){
+            //ini lokal
+            let dataDalam= "ini didalam"
+            document.writeln(`<p>${dataDalam}</p>`)
+        }
+        lokal()
+        //document.writeln(`<p>${dataDalam}</p>`)// ini gak bisa karna dataDalam didalam lokal scope dan tak bisa diakses diglobal scope
+
+        let data777
+        function cobaHybrit(){
+            data777= "ini bisa karna meski value diisi didalam lokal scope namun letak variabel dibuat diluar (diglobal scope)"
+        }
+
+        cobaHybrit()
+        document.writeln(data777)//"ini bisa karna meski diakses diglobal scope dan sivalue diisi didalam lokal scope
+                                // namun letak variabel dibuat diluar (diglobal scope)"
+
+        //recursive function
+        function recursive(value){
+            if (value === 1){
+            return 1
+            } else {
+                return value * recursive(value -1)
+            }
+            
+        }
+        console.info(recursive(3))
+        br()
+
+        //function generator
+        function* genet(){
+            yield "Aeng"
+            yield "never"
+            yield "surrender"
+            yield "bodo"
+            yield "amat"
+
+        }
+
+        const gen= genet()
+        console.info(gen.next())
+        console.info(gen.next())
+        console.info(gen.next())
+
+        //arrow function
+        const arrow = (value) => {
+            let data = "aku ingin begini aku ingin begitu"
+            document.writeln(data)
+        }
+
+        arrow()
+        br()
+
+        //arrow function satu baris
+        const arrow2 = (value) => document.writeln("da maot mah tos takdir")
+
+        arrow2()
+        br()
+
+        //object method/fungsi menjadi atribut dalam objeck
+        const method ={
+            nama: "ini method",
+            met: function(){
+                document.writeln("ini method2")
+            }
+        }
+
+        document.writeln(method.nama)
+        br()
+        method.met()
+        br()
+
+        //this
+        const thiss ={
+            nama: "kamal",
+            met: function(){
+                document.writeln(`ini this ${this.nama}`)
+            }
+        }
+
+        thiss.met()
+        br()
+
+        //getter
+        const produk = {
+            harga: 10000,
+
+            get hargaFinal() {
+                return this.harga * 1.1;
+            }
+        };
+
+        console.info(produk.hargaFinal);
+
+        //setter
+        const akun = {
+            dataPassword: "",
+
+            set password(value) {
+                if (value.length < 6) {
+                console.log("Password terlalu pendek");
+                return;
+                }
+                this.dataPassword = value;
+            }
+        };
+
+        akun.password = "abcdef";
+
+        //destructuring array
+        const names = ["leon", "Es", "Kennedy"]
+        const [awal,tengah,akhir]= names
+
+        document.writeln(awal,tengah,akhir)
+
+        //destructuring object
+        const {
+            firstName: namaDepan,
+            middleName: namaTengah = "Kurniawan",
+            lastName: namaBelakang
+        } = person;
+
+        console.info(namaDepan);
+        console.info(namaTengah);
+        console.info(namaBelakang);
+
+        //strict mode
+        //tinggal pake `use strict`
+
+        //debugger
+        //tinggal pake debugger
+
+
+
+
+    </script>
+</body>
+</html>

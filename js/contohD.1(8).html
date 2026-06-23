@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //for
+        for (let bil1 = 1;bil1 <= 15;bil1++) {
+            document.writeln(`<p>perulangan for ke- ${bil1}</p>`)
+        }
+
+        //while
+        let bil2 = 21
+        while (bil2 <= 35) {
+            document.writeln(`<p>perluangan while ke- ${bil2}</p>`)
+            bil2++
+        }
+
+        //do while
+        let bil3 = 41
+        do {
+            document.writeln(`<p>perluangan do while ke - ${bil3}</p>`)
+            bil3++
+        } while (bil3 <= 55)
+
+        //break
+        for (let bil4 = 60;true;bil4++) {
+            if (bil4 >75) {
+                break
+            }
+            document.writeln(`<p>perulangan break ke- ${bil4}</p>`)
+        }
+
+
+        //continue
+        for (let bil5 = 80;bil5 <= 100;bil5++) {
+            if (bil5 % 2 === 1) {
+                continue
+            }
+            document.writeln(`<p>perulangan continue ke- ${bil5}</p>`)
+        }
+
+
+        //for in untuk objeck karna lihat propertynya
+        let mob = {
+            nama1 : "creeper",
+            nama2 : "enderman",
+            nama3 : "zombie"
+        }
+        for (let lihatMob in mob){
+            document.writeln(`${lihatMob}`)
+            document.writeln("</br>")
+        }
+
+            // kalau mau lihat value
+        for (let lihatMob in mob){
+            document.writeln(`${lihatMob} : ${mob[lihatMob]}`) 
+            document.writeln("</br>")
+        }
+        /*
+        catatan: 
+        let lihatMob dua kali tidak bentrok alasannya karna khusus for biasa for of dan for in,
+        mereka secara otomatis membuat block atau ruangan berbeda secara otomatis.
+        meski let tidak ditempatkan didalam {} namun seolah olah kode sudah ditulis didalamnya.
+        jadi seolah olah seperti ini for {(let lihatMob in mob)}{
+        }
+        */
+
+                            
+
+        //for of untuk array karna lihat valuenya.
+        let player = [
+            "arif",
+            "hasan",
+            "udin"
+        ]
+        for (let lihatPlayer of player){
+            document.writeln(lihatPlayer)
+            document.writeln("</br>")
+        }
+
+        //with statement yang sekarang sudah tidak dianjurkan karna membuat kode menjadi ambigu
+        let mahasiswa = {
+            nama : "hasanuddin",
+            kelas : "TIA",
+            kampus : "universitas papuah"
+        }
+        with (mahasiswa){
+        console.info(nama)
+        console.info(kelas)
+        console.info(kampus)
+        }
+
+    </script>
+</body>
+</html>

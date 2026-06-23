@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* position */
+        /* static = bawaan gak bisa diubah ubah */
+        .contentN {
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+
+        .relative {
+            background-color: bisque;
+            /* relative diset default tapi bisa dirubah */
+            position: relative;
+            top: 20px;
+            left: 20px;
+        }
+
+        .absolute {
+            background-color: green;
+            /* absolute menghapus normalflow bahkan tidak ada space yabng digunakan sama sekali */
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            /* z-index untuk mengatur tumpukannya mana yang harus lebih dulu (- 0 +) */
+            z-index: +1;
+        }
+
+        .pixed {
+            background-color: blue;
+            /* sama seperti absolute hanya saja jika discrool konten tidak akan ikut bergerak keatas seperti halnya absolute */
+            position: pixed;
+            top: 200px;
+            left: 200px;
+            /* z-index untuk mengatur tumpukannya mana yang harus lebih dulu (- 0 +) */
+            z-index: -1;
+        }
+
+        .sticky {
+            background-color: pink;
+            /* gabungan relative dan pixed */
+            position: pixed;
+            top: 20px;
+            left: 20px;
+            /* z-index untuk mengatur tumpukannya mana yang harus lebih dulu (- 0 +) */
+            z-index: +1;
+        }
+
+        /* fraction */
+        .container {
+            background-color: blueviolet;
+            display: grid;
+            grid-template-columns: 200px 1fr 2fr 2fr 1fr;
+            column-gap: 10px;
+        }
+
+        .sidebar {
+            background-color: pink;
+        }
+
+        .content {
+            background-color: red;
+        }
+
+
+
+        
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="contentN">
+        <h1>content</h1>
+    </div>
+
+    <div class="contentN relative">
+        <h1>relative</h1>
+    </div>
+
+    <div class="contentN">
+        <h1>content</h1>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="contentN">
+        <h1>content</h1>
+    </div>
+
+    <div class="contentN absolute">
+        <h1>absolute</h1>
+    </div>
+
+    <div class="contentN">
+        <h1>content</h1>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="contentN">
+        <h1>content</h1>
+    </div>
+
+    <div class="contentN pixed">
+        <h1>pixed</h1>
+    </div>
+
+    <div class="contentN">
+        <h1>content</h1>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="contentN">
+        <h1>content</h1>
+    </div>
+
+    <div class="contentN sticky">
+        <h1>pixed</h1>
+    </div>
+
+    <div class="contentN">
+        <h1>content</h1>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="sidebar">
+            <h1>sidebar</h1>
+        </div>
+
+        <div class="content">content</div>
+        <div class="content">content</div>
+        <div class="content">content</div>
+        <div class="content">content</div>
+    </div>
+
+
+</body>
+</html>

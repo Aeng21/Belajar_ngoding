@@ -1,0 +1,432 @@
+Pseudo-class adalah cara CSS memilih elemen berdasarkan keadaan (state) tertentu.
+button:hover {
+    background: red;
+}
+hover = keadaan ketika mouse berada di atas elemen.
+
+
+Apa itu Pseudo-Element?
+
+Kalau pseudo-class memilih keadaan, pseudo-element memilih bagian tertentu dari elemen.
+HTML(<p>Halo</p>)
+
+p::before {
+    content: "uhuy";
+}
+
+
+
+
+=====yang sering dipake========
+Mantap. Kalau mau bikin website terasa hidup tanpa JavaScript, ada beberapa "jurus CSS" yang dipakai hampir di semua website modern.
+
+---
+
+# 1. Tombol Membesar Saat Hover
+
+```html
+<button class="btn">Masuk</button>
+```
+
+```css
+.btn {
+    padding: 1rem 2rem;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+```
+
+Efek:
+
+```text
+Mouse masuk
+↓
+Tombol membesar sedikit
+```
+
+---
+
+# 2. Tombol Tertekan Saat Diklik
+
+```css
+.btn:active {
+    transform: scale(0.95);
+}
+```
+
+Efek:
+
+```text
+Klik
+↓
+Tombol masuk ke dalam
+```
+
+Kayak tombol sungguhan.
+
+---
+
+# 3. Warna Berubah Saat Hover
+
+```css
+.btn {
+    background: green;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: limegreen;
+}
+```
+
+Efek:
+
+```text
+Hijau → Hijau terang
+```
+
+---
+
+# 4. Card Naik Saat Hover
+
+Sering banget dipakai.
+
+```html
+<div class="card">
+    Hello
+</div>
+```
+
+```css
+.card {
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+```
+
+Efek:
+
+```text
+Mouse masuk
+↓
+Card naik
+```
+
+---
+
+# 5. Shadow Bertambah Saat Hover
+
+```css
+.card {
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    transition: .3s;
+}
+
+.card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+```
+
+Efek:
+
+```text
+Card terasa melayang
+```
+
+---
+
+# 6. Gambar Zoom Saat Hover
+
+```html
+<div class="box">
+    <img src="gambar.jpg">
+</div>
+```
+
+```css
+.box {
+    overflow: hidden;
+}
+
+.box img {
+    transition: .4s;
+}
+
+.box:hover img {
+    transform: scale(1.1);
+}
+```
+
+Efek:
+
+```text
+Mouse masuk
+↓
+Gambar membesar
+```
+
+Dipakai di banyak website berita dan e-commerce.
+
+---
+
+# 7. Underline Navbar Animasi
+
+Ini favorit developer frontend.
+
+```html
+<a href="#">Home</a>
+```
+
+```css
+a {
+    position: relative;
+    text-decoration: none;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+
+    width: 0;
+    height: 2px;
+
+    background: green;
+    transition: .3s;
+}
+
+a:hover::after {
+    width: 100%;
+}
+```
+
+Efek:
+
+```text
+Hover
+↓
+Garis tumbuh dari kiri ke kanan
+```
+
+---
+
+# 8. Input Fokus
+
+```html
+<input type="text">
+```
+
+```css
+input {
+    transition: .3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: green;
+}
+```
+
+Efek:
+
+```text
+Klik input
+↓
+Border berubah warna
+```
+
+---
+
+# 9. Placeholder Menghilang
+
+```css
+input:focus::placeholder {
+    opacity: 0;
+}
+```
+
+Efek:
+
+```text
+Klik input
+↓
+Tulisan placeholder hilang
+```
+
+---
+
+# 10. Rotasi Icon
+
+```html
+<div class="icon">
+    ⚙️
+</div>
+```
+
+```css
+.icon {
+    transition: .4s;
+}
+
+.icon:hover {
+    transform: rotate(180deg);
+}
+```
+
+Efek:
+
+```text
+⚙️ muter
+```
+
+---
+
+# 11. Efek Glow
+
+```css
+.btn:hover {
+    box-shadow:
+        0 0 10px lime,
+        0 0 20px lime,
+        0 0 40px lime;
+}
+```
+
+Efek:
+
+```text
+Tombol bercahaya
+```
+
+Cocok untuk tema gelap.
+
+---
+
+# 12. Efek Blur Background
+
+```css
+.card {
+    backdrop-filter: blur(10px);
+}
+```
+
+Dipakai untuk efek glassmorphism.
+
+---
+
+# 13. Smooth Scroll
+
+Kalau klik navbar:
+
+```css
+html {
+    scroll-behavior: smooth;
+}
+```
+
+Efek:
+
+```text
+Klik menu
+↓
+Scroll halus
+```
+
+---
+
+# 14. Animasi Fade In
+
+```css
+.card {
+    animation: fade .5s ease;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+```
+
+Efek:
+
+```text
+Muncul perlahan
+```
+
+---
+
+# 15. Efek Floating
+
+```css
+.logo {
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+```
+
+Efek:
+
+```text
+Naik turun terus
+```
+
+---
+
+Kalau aku lihat levelmu sekarang (sudah paham Flexbox, class, BEM dasar), yang paling penting dikuasai dulu adalah:
+
+```css
+:hover
+:active
+:focus
+transition
+transform
+```
+
+Karena sekitar **80% efek interaktif CSS modern** sebenarnya cuma kombinasi dari 5 hal itu.
+
+Contoh yang sangat sering kamu lihat:
+
+```css
+.card {
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+```
+
+atau
+
+```css
+.btn {
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+```
+
+Begitu paham `hover + transition + transform`, website buatanmu langsung terasa jauh lebih profesional meskipun belum memakai JavaScript sama sekali. 🚀

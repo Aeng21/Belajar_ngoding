@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function br(){
+            document.writeln("</br>");
+        }
+
+        let statusMakhluk = "manusia",
+        statusUmur = 18,
+        statusKtp = "punya";
+        //percabangan bersarang bergerak dari yang umum menuju kedalam yang lebih umum.
+        if (statusMakhluk === "manusia") {
+            if (statusUmur >= 17) {
+                if(statusKtp === "punya") {
+                    document.writeln("boleh bikin sim");
+                } else {
+                    document.writeln("bikin ktp dulu bang");
+                }//3
+            } else {
+                document.writeln("belum cukup umur bang");
+            }//2
+        } else {
+            document.writeln("lah anda ini apa?");
+        }//1
+    </script>
+</body>
+</html>

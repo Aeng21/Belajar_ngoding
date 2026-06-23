@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refactor</title>
+
+<style>
+/* ================= BASE ================= */
+:root {
+  --text: hsl(136, 94%, 94%);
+  --bg: hsl(131, 94%, 7%);
+  --bg-sub: hsl(131, 94%, 15%);
+  --primary: hsl(131, 92%, 71%);
+  --secondary: hsl(199, 92%, 34%);
+  --accent: hsl(226, 92%, 57%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* ================= UTIL ================= */
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.text-center { text-align: center; }
+.gap-20 { gap: 20px; }
+.gap-40 { gap: 40px; }
+.gap-50 { gap: 50px; }
+.container { max-width: 1800px; margin: auto; }
+
+/* ================= COMPONENT ================= */
+.btn {
+  padding: 10px;
+  background: var(--accent);
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* HEADER */
+.header {
+  margin: 20px;
+  padding: 20px 70px;
+  background: var(--bg-sub);
+  border-radius: 8px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header__logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* desc / DESKRIPSI */
+.desc {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: var(--bg-sub);
+  border-radius: 8px;
+  font-size: 30px;
+}
+
+.desc__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: justify;
+}
+
+.desc__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.desc__img {
+  width: 700px;
+  border-radius: 8px;
+}
+
+/* PROGRAM */
+.program {
+  height: 500px;
+}
+
+.program__card {
+  height: 700px;
+  padding: 20px;
+  background: var(--bg-sub);
+  border-radius: 8px;
+  font-size: 25px;
+  text-align: justify;
+}
+
+.program__img {
+  width: 400px;
+  margin: 10px;
+  border-radius: 8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="header flex items-center justify-between">
+  <div class="flex items-center gap-20">
+    <img class="header__logo" src="assets/img/logo.png">
+    <p>GO BLOG</p>
+  </div>
+
+  <nav class="flex items-center gap-20">
+    <a href="">Menu</a>
+    <a href="">Pengaturan</a>
+    <a href="">Exit</a>
+  </nav>
+</header>
+
+<br><br><br>
+
+<main>
+
+<section class="desc container flex gap-50">
+  <div class="desc__content">
+    <p>
+      kamal never die adalah Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Deserunt blanditiis accusantium mollitia illo unde expedita omnis quae rem.
+    </p>
+
+```
+<br><br><br>
+
+<div class="desc__actions">
+  <button class="btn">masuk</button>
+  <button class="btn">keluar</button>
+</div>
+```
+
+  </div>
+
+  <img class="desc__img" src="assets/img/logo.png">
+</section>
+
+<section class="program container flex gap-40">
+
+  <div class="program__card">
+    <div class="text-center">
+      <img class="program__img" src="assets/img/html-dasar.png">
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+  </div>
+
+  <div class="program__card">
+    <div class="text-center">
+      <img class="program__img" src="assets/img/css-dasar.png">
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+  </div>
+
+  <div class="program__card">
+    <div class="text-center">
+      <img class="program__img" src="assets/img/js-dasar.png">
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+  </div>
+
+</section>
+
+</main>
+</body>
+</html>

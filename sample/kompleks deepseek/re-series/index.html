@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="asset/iconweb.png">
+    <title>Resident Evil Series | Survival Horror Legacy</title>
+    
+    <!-- Google Fonts & CSS Reset Modern -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom Properties / CSS Variables - gaya programmer profesional */
+        :root {
+            --primary-blood: #8b0000;
+            --primary-dark: #0a0c10;
+            --secondary-dark: #11151a;
+            --card-bg: #0f1217e6;
+            --text-light: #e0e0e0;
+            --text-muted: #9ca3af;
+            --accent-red: #c41e3a;
+            --accent-gold: #d4af37;
+            --border-glow: rgba(180, 0, 0, 0.4);
+            --font-heading: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+            --font-body: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            --transition-default: all 0.25s ease-in-out;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0b0e14, #030507);
+            font-family: var(--font-body);
+            color: var(--text-light);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            padding: 2rem 1rem;
+        }
+
+        /* custom scrollbar seperti IDE modern */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b0000;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91c1c;
+        }
+
+        /* container utama */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2rem 2rem 1.5rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(200, 0, 0, 0.15);
+        }
+
+        /* Header bergaya modern dengan efek glitch ringan */
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        #judul {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff0e0, #ff4d4d, #b91c1c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            display: inline-block;
+            border-bottom: 3px solid var(--accent-red);
+            padding-bottom: 0.25em;
+        }
+
+        /* navigasi card style */
+        .info-nav {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            padding: 1rem 1.8rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(180, 0, 0, 0.4);
+            transition: var(--transition-default);
+        }
+
+        .info-nav b {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            list-style: none;
+            justify-content: center;
+        }
+
+        .nav-links li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            background: #1e1a1f80;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            transition: 0.2s;
+            font-size: 0.85rem;
+            border: 1px solid #3a2a2a;
+            backdrop-filter: blur(4px);
+        }
+
+        .nav-links li a:hover {
+            background: var(--accent-red);
+            color: white;
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px -6px black;
+        }
+
+        /* list utama game */
+        ol {
+            list-style: none;
+            counter-reset: game-counter;
+        }
+
+        ol li {
+            counter-increment: game-counter;
+            margin-bottom: 3rem;
+        }
+
+        ol li:before {
+            content: "0" counter(game-counter);
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--accent-red);
+            display: inline-block;
+            width: 55px;
+            height: 55px;
+            line-height: 55px;
+            text-align: center;
+            border-radius: 30px;
+            margin-right: 1rem;
+            color: white;
+            box-shadow: 0 0 8px crimson;
+        }
+
+        .game-title {
+            font-size: clamp(1.6rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin: 1rem 0 1.2rem 0;
+            color: #ffc857;
+            text-shadow: 0 2px 3px black;
+            letter-spacing: -0.5px;
+            border-left: 6px solid var(--accent-red);
+            padding-left: 1rem;
+        }
+
+        /* card gambar + deskripsi modern */
+        .game-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 1.6rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .game-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 30px -12px black;
+            border-color: #b91c1c;
+        }
+
+        .game-img {
+            flex: 1.2;
+            min-width: 200px;
+        }
+
+        .game-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255, 80, 80, 0.5);
+            transition: 0.3s;
+        }
+
+        .game-img img:hover {
+            filter: brightness(1.05);
+            box-shadow: 0 0 12px rgba(180, 0, 0, 0.5);
+        }
+
+        .desc {
+            flex: 2;
+            font-size: clamp(0.85rem, 2vw, 1.05rem);
+            line-height: 1.55;
+            color: #e5e7eb;
+        }
+
+        .desc a {
+            display: inline-block;
+            margin-top: 0.8rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed var(--accent-gold);
+            transition: 0.2s;
+        }
+
+        .desc a:hover {
+            color: white;
+            border-bottom: 1px solid white;
+            letter-spacing: 0.3px;
+        }
+
+        /* tabel premium */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 24px;
+            background: #03060b;
+            padding: 0.5rem;
+            box-shadow: 0 10px 25px -5px black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+            font-family: 'JetBrains Mono', monospace, 'Courier New';
+            background: #0b0f15;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #2d1a1f;
+            color: #ffc857;
+            padding: 12px 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        td {
+            padding: 10px 6px;
+            border-bottom: 1px solid #2a2a2f;
+            color: #ddd;
+        }
+
+        tr:hover td {
+            background: rgba(139, 0, 0, 0.2);
+        }
+
+        /* Color gradient colgroup (custom) */
+        colgroup col:first-child {
+            background: #0e2a3b;
+        }
+        colgroup col:nth-child(2) {
+            background: #3c1a1f;
+        }
+        colgroup col:nth-child(3) {
+            background: #1e3a2f;
+        }
+
+        /* footer elegan */
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid rgba(180, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 32px;
+        }
+
+        footer a {
+            display: inline-block;
+            background: var(--accent-red);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.7rem;
+            border-radius: 40px;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            transition: all 0.2s;
+            border: none;
+            box-shadow: 0 2px 5px black;
+        }
+
+        footer a:hover {
+            background: #a1141a;
+            transform: translateY(-3px);
+            letter-spacing: 0.5px;
+        }
+
+        pre {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            background: #010101b3;
+            padding: 1rem;
+            border-radius: 24px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: #f0c0a0;
+            border-left: 4px solid var(--accent-red);
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        footer h4 {
+            margin-top: 1rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            font-family: monospace;
+        }
+
+        /* Responsive fine-tune */
+        @media (max-width: 780px) {
+            .container {
+                padding: 1rem;
+            }
+            .game-card {
+                flex-direction: column;
+            }
+            ol li:before {
+                width: 45px;
+                height: 45px;
+                line-height: 45px;
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.8rem;
+            }
+            .nav-links li a {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <b><h1 id="judul">RESIDENT EVIL SERIES</h1></b>
+    </header>
+
+    <main>
+        <!-- navigasi modern -->
+        <div class="info-nav">
+            <b>🔍 CARI INFORMASI RESIDENT EVIL SERIES DISINI :</b>
+            <ul class="nav-links">
+                <li><a href="#re0">RE 0</a></li>
+                <li><a href="#re1">RE 1</a></li>
+                <li><a href="#re2">RE 2</a></li>
+                <li><a href="#re3">RE 3</a></li>
+                <li><a href="#re4">RE 4</a></li>
+                <li><a href="#re5">RE 5</a></li>
+                <li><a href="#re6">RE 6</a></li>
+                <li><a href="#re7">RE 7</a></li>
+                <li><a href="#re8">RE 8</a></li>
+                <li><a href="#re9">RE 9</a></li>
+                <li><a href="#tabelket">📊 TABEL KETERANGAN</a></li>
+            </ul>
+        </div>
+
+        <ol>
+            <!-- RESIDENT EVIL 0 -->
+            <li>
+                <div class="game-title" id="re0">RESIDENT EVIL 0</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re0.jpg" alt="gambar re0"></div>
+                    <div class="desc">
+                        Prekuel dari tragedi Raccoon City yang menceritakan awal mula bencana biologis akibat eksperimen Umbrella Corporation. Cerita berfokus pada Rebecca Chambers, anggota termuda tim Bravo S.T.A.R.S, yang ditugaskan menyelidiki serangkaian pembunuhan misterius di pegunungan Arklay. Dalam perjalanan, ia bertemu Billy Coen, mantan marinir yang divonis mati sebagai kriminal perang. Awalnya mereka saling curiga, namun keadaan memaksa mereka bekerja sama demi bertahan hidup.
+                        Mereka menaiki Ecliptic Express, kereta mewah yang berubah menjadi neraka penuh monster akibat wabah T-Virus. Dari sana, mereka menemukan fakta mengerikan tentang Dr. James Marcus, salah satu pendiri Umbrella yang dikhianati dan bangkit kembali dengan obsesi balas dendam. Resident Evil 0 menjelaskan asal-usul virus, eksperimen lintah mutan, dan konflik internal Umbrella sebelum peristiwa game pertama terjadi.
+                        Gameplay-nya memperkenalkan sistem partner zapping, di mana pemain dapat berpindah antara Rebecca dan Billy untuk memecahkan puzzle serta bertahan hidup. Atmosfer horor klasik dipadukan dengan keterbatasan amunisi, monster grotesk, dan rasa terisolasi yang kuat. Game ini menjadi fondasi penting untuk memahami awal kehancuran Raccoon City dan kebusukan Umbrella dari dalam.
+                        <br><a href="sub/re0.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE1 -->
+            <li>
+                <div class="game-title" id="re1">RESIDENT EVIL 1</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re1.jpg" alt="gambar re1"></div>
+                    <div class="desc">
+                        Resident Evil pertama dimulai ketika tim S.T.A.R.S dikirim ke kawasan Arklay Mountains untuk menyelidiki pembunuhan aneh dan hilangnya tim Bravo. Setelah diserang anjing mutan, tim Alpha berlindung di sebuah mansion besar yang ternyata menyimpan rahasia mengerikan. Mansion tersebut adalah fasilitas penelitian rahasia Umbrella Corporation yang dipenuhi zombie, makhluk biologis mutan, dan jebakan mematikan.
+                        Pemain dapat memilih antara Chris Redfield atau Jill Valentine, masing-masing dengan jalur cerita dan tantangan berbeda. Mereka harus memecahkan puzzle, mengumpulkan sumber daya terbatas, dan bertahan dari ancaman biologis sambil mengungkap konspirasi Umbrella. Salah satu pengkhianatan terbesar datang dari Albert Wesker, kapten S.T.A.R.S yang ternyata bekerja untuk Umbrella demi mendapatkan data senjata biologis.
+                        Resident Evil menjadi pelopor genre survival horror dengan kamera fixed angle, manajemen item yang ketat, dan suasana tegang yang legendaris. Mansion Spencer menjadi ikon dalam dunia game horor karena desainnya yang penuh misteri dan rasa takut konstan. Game ini juga memperkenalkan banyak karakter penting yang terus muncul di seri berikutnya.
+                        <br><a href="sub/re1.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE2 -->
+            <li>
+                <div class="game-title" id="re2">RESIDENT EVIL 2</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re2.jpg" alt="gambar re2"></div>
+                    <div class="desc">
+                        Resident Evil 2 mengambil latar beberapa bulan setelah insiden mansion. Raccoon City kini jatuh total akibat penyebaran T-Virus. Kota berubah menjadi tempat penuh zombie, kehancuran, dan kepanikan massal. Cerita mengikuti Leon S. Kennedy, polisi rookie yang baru pertama masuk kerja, dan Claire Redfield, yang mencari kakaknya Chris.
+                        Keduanya bertemu di tengah kekacauan dan mencoba bertahan hidup sambil mencari jalan keluar dari kota. Mereka menjelajahi kantor polisi RPD yang penuh teka-teki dan monster mengerikan. Ancaman terbesar datang dari Tyrant atau Mr. X, senjata biologis yang terus memburu pemain tanpa henti. Selain itu ada William Birkin, ilmuwan Umbrella yang berubah menjadi monster akibat G-Virus ciptaannya sendiri.
+                        Resident Evil 2 dikenal karena atmosfer mencekam, perkembangan karakter yang kuat, dan pacing cerita yang luar biasa. Remake-nya berhasil menghidupkan kembali horor klasik dengan visual modern dan gameplay over-the-shoulder yang intens. Game ini menjadi salah satu seri Resident Evil paling dicintai sepanjang masa.
+                        <br><a href="sub/re2.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE3 -->
+            <li>
+                <div class="game-title" id="re3">RESIDENT EVIL 3</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re3.jpg" alt="gambar re3"></div>
+                    <div class="desc">
+                        Resident Evil 3 berfokus pada Jill Valentine yang mencoba melarikan diri dari Raccoon City sebelum kota dihancurkan pemerintah. Namun ia diburu Nemesis, bio-weapon super cerdas yang diciptakan Umbrella untuk membunuh anggota S.T.A.R.S yang masih hidup. Tidak seperti Tyrant biasa, Nemesis dapat menggunakan senjata, berlari, dan mengejar pemain secara agresif.
+                        Sepanjang perjalanan, Jill bertemu Carlos Oliveira dari organisasi tentara bayaran U.B.C.S. Mereka bersama-sama mencoba mengungkap kebenaran dan menemukan jalan keluar dari kota yang sudah menjadi medan perang penuh zombie dan monster mutasi. Ketegangan meningkat karena Nemesis bisa muncul kapan saja, menciptakan rasa takut terus-menerus.
+                        Resident Evil 3 memperlihatkan kehancuran akhir Raccoon City sebelum akhirnya dihancurkan dengan rudal nuklir untuk menghentikan penyebaran wabah. Game ini memperkuat karakter Jill sebagai salah satu protagonis paling ikonik dalam franchise Resident Evil.
+                        <br><a href="sub/re3.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE4 -->
+            <li>
+                <div class="game-title" id="re4">RESIDENT EVIL 4</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re4.jpg" alt="gambar re4"></div>
+                    <div class="desc">
+                        Enam tahun setelah kehancuran Raccoon City, Leon S. Kennedy kini menjadi agen pemerintah Amerika Serikat. Ia dikirim ke desa terpencil di Spanyol untuk menyelamatkan Ashley Graham, putri presiden yang diculik sekte misterius bernama Los Illuminados.
+                        Namun ancaman kali ini bukan zombie biasa. Penduduk desa terinfeksi Las Plagas, parasit yang membuat mereka tetap sadar namun brutal dan fanatik. Leon menghadapi banyak musuh berbahaya termasuk Chainsaw Man, Verdugo, hingga Osmund Saddler sang pemimpin sekte.
+                        Resident Evil 4 merevolusi gameplay franchise dengan kamera over-the-shoulder yang kemudian ditiru banyak game lain. Kombinasi action dan horror dibuat sangat seimbang. Ceritanya juga memperlihatkan perkembangan Leon dari polisi rookie menjadi agen elit yang lebih dingin dan berpengalaman.
+                        Game ini dianggap sebagai salah satu video game terbaik sepanjang masa karena gameplay revolusioner, pacing luar biasa, serta desain musuh dan boss yang ikonik.
+                        <br><a href="sub/re4.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE5 -->
+            <li>
+                <div class="game-title" id="re5">RESIDENT EVIL 5</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re5.jpg" alt="gambar re5"></div>
+                    <div class="desc">
+                        Resident Evil 5 membawa Chris Redfield ke Afrika untuk menyelidiki perdagangan senjata biologis baru. Ia bekerja sama dengan Sheva Alomar dalam organisasi BSAA untuk menghentikan penyebaran virus baru yang berasal dari eksperimen Las Plagas dan Uroboros.
+                        Di sana Chris kembali bertemu Albert Wesker, musuh lamanya yang kini memiliki kekuatan super akibat eksperimen virus. Wesker berencana menciptakan dunia baru melalui seleksi biologis massal menggunakan virus Uroboros.
+                        Game ini lebih fokus pada action dan co-op dibanding horror klasik. Pemain dapat bermain bersama teman sebagai Chris dan Sheva. Walaupun atmosfer horornya berkurang, Resident Evil 5 tetap penting karena menjadi klimaks konflik panjang antara Chris dan Wesker.
+                        Pertarungan akhir melawan Wesker di gunung berapi menjadi salah satu momen paling terkenal dalam franchise Resident Evil.
+                        <br><a href="sub/re5.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE6 -->
+            <li>
+                <div class="game-title" id="re6">RESIDENT EVIL 6</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re6.jpg" alt="gambar re6"></div>
+                    <div class="desc">
+                        Resident Evil 6 adalah game dengan skala terbesar dalam seri utama. Ceritanya dibagi menjadi beberapa campaign berbeda yang saling terhubung, menghadirkan karakter-karakter utama seperti Leon Kennedy, Chris Redfield, Jake Muller, dan Ada Wong.
+                        Dunia kini menghadapi ancaman bioteror global akibat virus C-Virus yang mampu menciptakan mutasi mengerikan. Leon menghadapi tragedi ketika Presiden Amerika berubah menjadi zombie, sementara Chris harus menghadapi trauma kehilangan timnya dalam misi sebelumnya.
+                        Jake Muller, anak Albert Wesker, menjadi target banyak pihak karena darahnya memiliki antibodi penting terhadap virus. Cerita game ini penuh ledakan, aksi besar, dan pertarungan epik di berbagai negara.
+                        Walaupun mendapat kritik karena terlalu fokus pada action dan meninggalkan nuansa horror klasik, Resident Evil 6 tetap menjadi salah satu game paling ambisius dalam franchise dengan skala cerita yang sangat besar.
+                        <br><a href="sub/re6.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE7 -->
+            <li>
+                <div class="game-title" id="re7">RESIDENT EVIL 7</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re7.jpg" alt="gambar re7"></div>
+                    <div class="desc">
+                        Resident Evil 7 menjadi reboot atmosfer franchise dengan kembali ke akar survival horror. Cerita mengikuti Ethan Winters yang mencari istrinya, Mia, di rumah keluarga Baker di Louisiana setelah ia dinyatakan hilang selama bertahun-tahun.
+                        Rumah keluarga Baker terlihat seperti mimpi buruk penuh pembunuhan, jamur mutan, dan kegilaan. Ethan harus bertahan dari Jack Baker dan keluarganya yang brutal sambil mengungkap sumber infeksi misterius bernama Mold.
+                        Game ini menggunakan sudut pandang first-person untuk meningkatkan imersi dan rasa takut. Nuansa horornya jauh lebih personal, sempit, dan mencekam dibanding seri sebelumnya. Resident Evil 7 juga memperkenalkan Eveline, senjata biologis berbentuk anak kecil yang mampu mengendalikan pikiran manusia.
+                        Game ini berhasil menghidupkan kembali identitas horror Resident Evil setelah era action-heavy sebelumnya.
+                        <br><a href="sub/re7.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE8 -->
+            <li>
+                <div class="game-title" id="re8">RESIDENT EVIL 8</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re8.png" alt="gambar re8"></div>
+                    <div class="desc">
+                        Resident Evil Village melanjutkan kisah Ethan Winters beberapa tahun setelah RE7. Ethan hidup bersama Mia dan putri mereka, Rosemary, sebelum hidup mereka kembali hancur akibat serangan Chris Redfield.
+                        Ethan dibawa ke desa misterius di Eropa yang dipenuhi monster, manusia serigala, dan penguasa mengerikan seperti Lady Dimitrescu, Heisenberg, Donna Beneviento, dan Mother Miranda. Setiap area memiliki nuansa horror berbeda, mulai dari kastil vampir hingga rumah boneka yang sangat menyeramkan.
+                        Cerita game ini perlahan mengungkap rahasia besar tentang asal-usul Mold dan hubungan Ethan dengan dunia biologis Resident Evil. Village memadukan action RE4 dengan horror RE7, menghasilkan pengalaman yang lebih seimbang.
+                        Ending game ini menjadi penutup emosional bagi perjalanan Ethan Winters dan membuka masa depan baru untuk Rosemary.
+                        <br><a href="sub/re8.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- RE9 -->
+            <li>
+                <div class="game-title" id="re9">RESIDENT EVIL 9</div>
+                <div class="game-card">
+                    <div class="game-img"><img src="img-desc/re9.png" alt="gambar re9"></div>
+                    <div class="desc">
+                        Cerita berfokus pada Grace Ashcroft, seorang analis FBI muda yang menyelidiki kasus pembunuhan misterius yang berhubungan dengan masa lalu keluarganya. Grace ternyata adalah putri Alyssa Ashcroft, karakter dari Resident Evil Outbreak. Investigasinya membawanya menuju reruntuhan Raccoon City dan Wrenwood Hotel, lokasi penuh misteri yang berkaitan dengan eksperimen biologis lama Umbrella.
+                        Selain Grace, game ini juga menghadirkan kembali Leon S. Kennedy sebagai protagonis kedua. Leon tampil lebih tua, berpengalaman, dan terlibat langsung dalam konspirasi besar yang menghubungkan era klasik Resident Evil dengan ancaman baru. Sistem dual protagonist membuat gameplay berganti antara survival horror penuh ketegangan milik Grace dan action-horror intens ala Leon.
+                        Resident Evil Requiem menggunakan RE Engine generasi terbaru dengan visual yang jauh lebih realistis. Detail wajah, pencahayaan gelap, efek darah, hingga desain monster dibuat sangat mengerikan dan imersif. Capcom juga membawa kembali nuansa eksplorasi sempit, puzzle klasik, manajemen resource, dan rasa takut konstan yang mengingatkan pemain pada era Resident Evil lama.
+                        Gameplay-nya memadukan perspektif first-person dan third-person secara dinamis. Grace lebih berfokus pada stealth, investigasi, dan bertahan hidup, sementara Leon memiliki gameplay lebih agresif namun tetap mempertahankan elemen horror. Banyak lokasi ikonik lama muncul kembali dalam kondisi hancur dan menyeramkan, terutama area-area bekas Raccoon City setelah kehancuran nuklir bertahun-tahun sebelumnya.
+                        <br><a href="sub/re9.html">selengkapnya...</a>
+                    </div>
+                </div>
+            </li>
+        </ol>
+
+        <!-- Tabel Keterangan -->
+        <h1 id="tabelket" style="text-align: center; margin: 2rem 0 1rem; font-size: clamp(1.4rem, 5vw, 2rem); color: #e0aa3e;">📋 TABEL KETERANGAN</h1>
+        <div class="table-wrapper">
+            <table>
+                <colgroup>
+                    <col style="background-color: #0f2a3a;">
+                    <col style="background-color: #4c1a24;">
+                    <col style="background-color: #1f3b2c;">
+                </colgroup>
+                <thead>
+                    <tr><th>SERIES</th><th>KARAKTER</th><th>FINAL BOS</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td rowspan="2">0</td><td>Rebecca Chambers</td><td rowspan="2">Queen Leech/James Marcus</td></tr>
+                    <tr><td>Billy Coen</td></tr>
+                    <tr><td rowspan="2">1</td><td>Chris Redfield</td><td rowspan="2">Tyrant T-002</td></tr>
+                    <tr><td>Jill Valentine</td></tr>
+                    <tr><td rowspan="4">2</td><td>Leon S. Kennedy</td><td rowspan="2">Super Tyrant</td></tr><tr><td>Ada Wong</td></tr>
+                    <tr><td>Claire Redfield</td><td rowspan="2">William Birkin</td></tr><tr><td>Sherry Birkin</td></tr>
+                    <tr><td rowspan="2">3</td><td>Jill Valentine</td><td rowspan="2">Nemesis</td></tr><tr><td>Carlos Oliveira</td></tr>
+                    <tr><td rowspan="3">4</td><td>Leon S. Kennedy</td><td rowspan="3">Osmund Saddler</td></tr><tr><td>Ashley Graham</td></tr><tr><td>Ada Wong</td></tr>
+                    <tr><td rowspan="2">5</td><td>Chris Redfield</td><td rowspan="2">Albert Wesker</td></tr><tr><td>Sheva Alomar</td></tr>
+                    <tr><td rowspan="4">6</td><td>Leon S. Kennedy dan Helena Harper</td><td>Derek C. Simmons</td></tr><tr><td>Chris Redfield dan Piers Nivans</td><td>Haos</td></tr><tr><td>Jake Muller dan Sherry Birkin</td><td>Ustanak</td></tr><tr><td>Ada Wong dan agent</td><td>Derek C. Simmons</td></tr>
+                    <tr><td rowspan="3">7</td><td>Ethan Winters</td><td rowspan="2">Eveline</td></tr><tr><td>Mia Winters</td></tr><tr><td>Chris Redfield</td><td>Lucas baker</td></tr>
+                    <tr><td rowspan="2">8</td><td>Ethan Winters</td><td rowspan="2">Mother Miranda</td></tr><tr><td>Chris Redfield</td></tr>
+                    <tr><td rowspan="2">9</td><td>Grace Ashcroft</td><td rowspan="2">Victor Gideon</td></tr><tr><td>Leon S. Kennedy</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <audio src="asset/backsound.mp3" autoplay loop></audio>
+        <a href="#judul">🔺</a>
+        <pre>
+        MOHON MAAF APABILA ADA KESALAHAN, KEKURANGAN, DAN KEKHILAFAN
+        YANG TIDAK BERKENAN DI HATI ANDA SEMUA.
+
+        KITA TUTUP WEBSITE KITA KALI INI DENGAN DOA KAFARATUL MAJELIS
+
+        "SUBHĀNAKALLĀHUMMA WA BIHAMDIKA"
+
+        "ASYHADU ALLĀ ILĀHA ILLĀ ANTA"
+
+        "ASTAGHFIRUKA WA ATŪBU ILAIK"
+
+        "JANGAN LUPA SHOLAT LIMA WAKTU"
+
+        "JAGA KESEHATAN SELALU"
+
+        "ASSALĀMU'ALAIKUM WARAHMATULLĀHI WABARAKĀTUH"
+        </pre>
+        <h4>BY MAKSHUR WESKER</h4>
+    </footer>
+</div>
+</body>
+</html>

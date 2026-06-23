@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let nama = "Ahmad Musthafa Kamal";
+        let nilaiUTS = 78;
+        let nilaiUAS = 85;
+        let kehadiran = 95;
+        let keaktifan = 7;
+        let keterlambatan = 5;
+        let umur = "22";     
+        
+        let nilaiSementara = (nilaiUTS + nilaiUAS) / 2
+        let nilaiAkhir = nilaiSementara + keaktifan - keterlambatan
+
+        let syaratNilai = nilaiAkhir >= 70
+        let syaratKehadiran = kehadiran >= 75
+
+        let perbandingan1 = ">="
+        let perbandingan2 = "<=" 
+        let perbandingan3 = `${nilaiAkhir >= 70? perbandingan1 : perbandingan2}`
+        let perbandingan4 = `${kehadiran >= 75? perbandingan1 : perbandingan2}`
+
+        let logika = syaratNilai && syaratKehadiran
+
+        let lulus = "Dinyatakan Lulus"
+        let gagal = "Dinyatakan Gagal"
+
+
+        document.writeln("Nama Siswa : " + nama);
+        document.writeln("</br>");
+        document.writeln(`Umur Siswa : ${Number(umur)}`);
+        document.writeln("</br>");
+        document.writeln(`Nilai Akhir Siswa : ${perbandingan3} ${nilaiAkhir}`);
+        document.writeln("</br>");
+        document.writeln(`Nilai Kehadiran Siswa : ${perbandingan4} ${kehadiran}`);
+        document.writeln("</br>");
+        document.writeln(`Dengan Ini Siswa ${logika? lulus : gagal}`);
+        document.writeln("</br>")
+        document.writeln(`Nilai UTS Siswa : ${nilaiUTS}`);
+        document.writeln("</br>");
+        document.writeln(`Nilai UAS Siswa : ${nilaiUAS}`);
+        document.writeln("</br>");
+
+        console.info("ini dokumen rahasia negara");
+        console.warn("masukan data dengan teliti");
+        console.error("awas error");
+        console.table(`${nama}, ${umur}`);
+
+        document.writeln(`${isNaN(nama)}`);
+        document.writeln({nama, umur});
+
+    
+    </script>
+</body>
+</html>

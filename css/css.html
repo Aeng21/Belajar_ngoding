@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.color {
+    color: red;
+}
+
+.text-align {
+    text-align: justify;
+}
+
+.text-decoration {
+    text-decoration-line: underline;
+    text-decoration-color: blue;
+    text-decoration-style: wavy;
+    text-decoration-thickness: 5px;
+}
+
+.text-transform {
+    text-transform: uppercase;
+}
+
+/* text-spacing */
+/* tab */
+.text-indent {
+    text-indent: 50px;
+}
+
+/* jarak antar huruf */
+.letter-spacing{
+  letter-spacing: 2px;  
+}
+
+/* jarak antar baris */
+.line-height {
+    line-height: 2.5;
+}
+
+/* jarak antar kata */
+.word-spacing {
+    word-spacing: 10px;
+}
+
+/* X(hori), y(vert), blur, color */
+.text-shadow {
+    text-shadow: 2px 2px 2px black;
+}
+
+.font-family {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.font-style {
+    font-style: italic;
+}
+
+.font-weight {
+    font-weight: bold;
+}
+
+.font-size {
+    font-size: 30px;
+}
+
+.box {
+    background-color: red;
+    color: white;
+    width: 200px;
+    height: 100px;
+}
+
+/* atas, kanan, bawah,kiri */
+.padding {
+    background-color: aqua;
+    padding: 10px 20px 10px 20px;
+}
+
+/* ketika bertemu maka margin tertinggi yang diambil misal margin buttom di konten atas dan margin top di konten bawah */
+.margin {
+    background-color: yellow;
+    margin: 50px 70px 50px 70px;
+}
+
+.minmax {
+    background-color: pink;
+    width: 75%;
+    min-width: 200px;
+    max-width: 500px;
+}
+
+/* kalo mau digabung widht style color */
+.border {
+    border-color: red;
+    border-width: 10px;
+    border-style: double;
+    border-radius: 50px;
+    /* bisa dirinci satu satu juga jika ingin beda beda .border-left-width: ; */
+}
+
+/* mirip seperti border (adanya setelah border)*/
+.outline {
+outline: 10px red solid;
+border-radius: 30px;
+}
+
+/* gradientcs */
+body {
+    /* background-image: url(joks.png); */
+    background-image: linear-gradient(red, blue, yellow);
+    /* diulang ulang atau tidak nya */
+    background-repeat: repeat-y; 
+}
+
+/* transparan */
+/* 0-1 */
+.opacity {
+    opacity: 0.25;
+    background-color: aqua;
+}
+
+.writing {
+    writing-mode: vertical-lr;
+}
+
+.overflow {
+    overflow: scroll;
+    background-color: aqua;
+    width: 200px;
+    height: 200px;
+}
+
+/* pseudo-elements-selector kita skip dulu (::)*/
+/* pseudo-classes-selector kita skip dulu(:)*/
+
+/* link */
+a {
+    color: red;
+    text-decoration: none;
+    font-size: 25px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    background-color: brown;
+    color: white;
+}
+
+/* list */
+.list {
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+
+
+</style>
+<body>
+    <p class="color"> ini warna</p>
+
+    <p class="text-align text-indent">ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiri</p>
+
+    <p class="text-decoration">ini dekorasi</p>
+
+    <p class="text-transform">aku adalah meja dan meja adalah aku</p>
+
+    <p class="text-indent">seperti tab</p>
+
+    <p class="letter-spacing">jarak antar huruf</p>
+
+    <p class="line-height">jarak antar baris</p>   
+
+    <p class="word-spacing">jarak antar kata</p>
+
+    <p class="text-shadow color">INI ADALAH AENG</p>
+
+    <p class="font-family">ini pake font family</p>
+
+    <p class="font-style">ini jadi miring</p>
+
+    <p class="font-weight">ini jadi tebal</p>
+
+    <p class="font-size">ini untuk ukuran</p>
+
+    <p class="box">didunia ini tenang aja</p>
+
+    <p class="padding">ini paddding</p>
+
+    <p class="margin">ini margin</p>
+
+    <p class="minmax">ini adalah aku raja meksiko elmatadore salvador tekila elkontole ya</p>
+
+    <p class="border">ini pake border pap</p>
+
+    <p class="outline">ini pake outline</p>
+
+    <p class="opacity">ini adalah opacity</p>
+
+    <p class="writing">ini pake writing</p>
+
+    <p class="overflow">ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiri</p>
+
+    <a href="https://facebook.com">facebook</a>
+    <a href="https://instagram.com">instagram</a>
+    <a href="https://ProgrammerZamanNow.com">pzn</a>
+
+    <ul class="list">
+        <li>ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiri</li>
+        <li>ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiriini rata kanan kiri ini rata kanan kiri ini rata kanan kiriini rata kanan kiriini rata kanan kiri</li>
+        <li>bila</li>
+        <li>bila</li>
+        <li>bila</li>
+    </ul>
+
+
+
+
+    
+</body>
+</html>

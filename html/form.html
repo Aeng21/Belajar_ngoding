@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- get biar terlihat dihotbar http(disimpan diparameter query)
+    sedangakan post tidak terlihat dihotbar -->
+    <form name="registrasi" action="form.html" method="post">
+        <label for="nama">Nama : </label><br>
+        <input name="nama" id="nama" type="text" value="masukan nama anda"><br>
+        <label for="kelas">Kelas : </label><br>
+        <input name="kelas" id="kelas" type="text" value="masukan kelas berapa anda"><br>
+        <br>
+        <input type="submit" value="KONFIRMASI">
+        <input type="reset" value="reset">
+
+        <!-- mulai pake js -->
+        <input type="button" value="hello" onclick="alert('hello')">
+
+        <br>
+        pilih hero kesukaan mu.
+        <input type="checkbox" name="ethan" id="ethan">
+        <label for="ethan">ethan</label>
+        <input type="checkbox" name="leon" id="leon">
+        <label for="leon">leon<label>
+        <input type="checkbox" name="chris" id="chris">
+        <label for="chris">chris</label>
+
+        <br>
+        <label for="warna">APA WARNA KESUKAAN MU</label>
+        <input type="color" name="warna" id="warna" value="#512a2a">
+        <br>
+        <label for="tanggal-kemerdekaan">masukan tanggal</label>
+        <input type="date" name="tanggal-kemerdekaan" id="tanggal-kemerdekaan" value="1945-08-17" min="1930-12-12" max="2020-12-12">
+        <br>
+        <label for="waktu">masukan waktu lengkapnya</label>
+        <input type="datetime-local" name="waktu" id="waktu" value="2003-10-21T12:12">
+        <br>
+        <label for="bulantahun">masukan bulan dan tahun saja</label>
+        <input type="month" name="bulantahun" id="bulantahun" value="2003-10">
+        <br>
+        <label for="jam">masukan jamnya</label>
+        <input type="time" name="jam" id="jam" value="00:00">
+        <br>
+        <label for="minggusetahun">masukan minggu keberapa dalam satu tahun</label>
+        <input type="week" name="minggusetahun" id="minggusetahun" value="2003-W52">
+        <br>
+        <label for="email">masukan email anda</label>
+        <input type="email" name="email" id="email" value="@gmail.com">
+        <br>
+        <input type="hidden" name="idpap" id="kamal">
+        <br>
+        masukan numbernya
+        <input type="number" min="5" max="10">
+        <br>
+        masukan password
+        <input type="password" name="pas" id="pas">
+        <br>
+        <!-- name harus sama -->
+        lanang
+        <input type="radio" name="jenkel" id="lanang">
+        <br>
+        woman
+        <input type="radio" name="jenkel" id="woman">
+        <br>
+        nilai kamu
+        <input type="range" name="nilai" id="nilai" min="0" max="100" step="10" value="50">
+        <br>
+        url
+        <input type="url" name="web" id="web">
+        <br>
+
+
+
+        <!-- beda lagi -->
+        text area
+        <textarea name="isi" id="isi" cols="30" rows="10"></textarea>
+        <br>
+        <button type="submit">ini tombol gila bisa panjang disini mah pap bisa juga dipake gambar didalamnya</button>
+        <br>
+        <!-- kalo pake multiple itu bisa pilih lebih dari satu -->
+        <select name="hobby" id="hobby" multiple size="2">
+            <option value="coding" selected>Codhing</option>
+            <option value="menggambar">Gambar</option>
+            <option value="baca">Bacha</option>
+        </select>
+
+        <br>
+        <select name="identitas" id="identitas">
+            <optgroup label="nama">
+                <option value="kamal">ahmad musthafa</option>
+                <option value="makshur">uwais alqorni</option>
+                <option value="riz">rezila fitur</option>
+            </optgroup>
+
+            <optgroup label="kelas">
+                <option value="satu">1</option>
+                <option value="dua" selected>2</option>
+                <option value="tiga">3</option>
+            </optgroup>
+        </select>
+
+        <br>
+        <!-- bedalagi -->
+        <label for="bebas">masukan bebas</label>
+        <input type="text" name="bebas" id="bebas" list="bebass">
+
+        <datalist id="bebass">
+            <option value="Coding">Coding</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Reading">Reading</option>
+        </datalist>
+
+        <br>
+        <fieldset>
+            <legend>karakter</legend>
+            <label for="nama1">masukan nama<input type="text" name="nama1" id="nama1"></label>
+            <br>
+            <label for="kelas2">masukan kelas<input type="text" name="kelas2" id="kelas2"></label>
+        </fieldset>
+
+
+        <br>
+        <input type="image" name="timg" id="timg" src="joks.png">
+
+        <!-- beda nih wajib methodnya post dan enctype="multipart/form-data"-->
+         <form action="tampilanawal.html" method="post" enctype="multipart/form-data">
+            <label for="file">masukan file yang akan diupload</label>
+            <input type="file" name="file" id="fie">
+
+         </form>
+    </form>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //switch
+        nilaiIpk = "a"
+
+        switch (nilaiIpk) {
+            case "a" : document.writeln("hidup jokowi")
+            break
+
+            case "b" :
+            case "c" : document.writeln("kerja bagus")
+            break
+
+            case "d" : document.writeln("kamu tolol")
+        }
+        //typeof
+        document.writeln("<p>" + typeof nilaiIpk + "</p>");
+        
+        //in
+        let array =["kamal", "ahmad", "musthafa"]
+        document.writeln(1 in array)
+        document.writeln("</br>")
+        console.table(array)
+
+        //ternary
+        let ternary1 = 10
+        let ternary2 = 20
+        document.writeln(`<p>bilangan a yaitu ${ternary1} ${ternary1 < ternary2 ? "lebih kecil" : "lebih besar" } dari pada bilangan2 yaitu ${ternary2}</p>`)
+
+        //ternary bersarang
+        let angka1 = 10
+        let angka2 = 9
+        
+        let log1 = angka1 > angka2? angka1 + " lebih besar dari pada " + angka2: 
+                angka1 < angka2? angka1 + "lebih kecil dari pada" + angka2 : angka1 + "sama dengan" + angka2
+
+        document.writeln("angka pertama " + angka1)
+        document.writeln("</br>")
+        document.writeln("angka kedua " + angka2)
+        document.writeln("</br>")
+        document.writeln(log1)
+        document.writeln("</br>")
+
+
+        // tanpa nullish coalescing
+        let nol
+        if (nol ==null || nol == undefined) {
+            document.writeln("ini nullish")
+        } else {
+            document.writeln("ini bukan nullish")
+        }
+        //dengan nullish
+        let cekNullish = nol ?? "ini nullish" //true
+        document.writeln("<p>" + cekNullish+ "</p>")
+
+
+        // tanpa optional caining
+
+        let nama = {}
+
+        let cekError1 = nama //objeck
+        let cekError2 = nama.npm //undefinited
+        //let cekError3 = nama.npm.jurusan //error program
+
+        document.writeln(`<p> ${cekError1} </p>`)
+        document.writeln(`<p> ${cekError2} </p>`)
+        //document.writeln(`<p> ${cekError3} </p>`)
+
+        // dengan optional caining
+        let person = {
+            address : {
+                country : "Indonesia"
+            }
+        }
+
+        let cekError4 = person?.address?.country
+
+        document.writeln(cekError4)
+        document.writeln("</br>")
+
+        // false
+        let falsy= 0
+        if (falsy) {
+            document.writeln("ini tRue")
+        } else {
+            document.writeln("ini fAlse")
+        }
+        document.writeln("</br>")
+
+        //truthy
+         // false
+        let truthy= "uhuy"
+        if (truthy) {
+            document.writeln("ini tRue")
+        } else {
+            document.writeln("ini fAlse")
+        }
+
+        //logika non boolean 
+        
+        //falsy (and)
+
+        let boolean1 = 6 < 3
+        document.writeln("</br>") 
+        document.writeln(0 && "uhuy uhuy")
+        document.writeln("</br>") 
+        document.writeln(boolean1 && "uhuy uhuy")
+        document.writeln("</br>") 
+        document.writeln("" && "uhuy uhuy")
+        document.writeln("</br>") 
+        document.writeln("di atas ini ada string kosong yah")
+
+        //truthy (or)
+        let boolean2 = 6 > 3
+        document.writeln("</br>") 
+        document.writeln(17 || -0)
+        document.writeln("</br>")
+        document.writeln(boolean2 || "cihuy")  
+        
+
+
+
+
+    </script>
+</body>
+</html>

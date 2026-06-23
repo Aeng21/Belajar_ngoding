@@ -1,0 +1,6 @@
+Pertanyaan 1
+Apakah class ini menjelaskan "benda yang sama"?
+Kalau iya → pakai -
+Pertanyaan 2
+Apakah class ini menjelaskan "isi di dalam benda itu"?
+Kalau iya → pakai __

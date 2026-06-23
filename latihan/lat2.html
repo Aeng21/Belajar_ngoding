@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    :root {
+        --text: hsl(136, 94%, 94%);
+        --background: hsl(131, 94%, 7%);
+        --background-sub: hsl(131, 94%, 15%);
+        --primary: hsl(131, 92%, 71%);
+        --secondary: hsl(199, 92%, 34%);
+        --accent: hsl(226, 92%, 57%);
+
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    /* global */
+    body {
+        background-color: var(--background);
+        color: var(--text);
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--text);
+    }
+
+    /* template */
+    .container {
+        max-width: 1500px;
+        margin: auto;
+        padding: 30px;
+
+        background-color: var(--background-sub);
+        color: var(--primary);
+        border-radius: 8px;
+    }
+
+    .container-flex {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .button {
+        padding: 10px;
+
+        background-color: var(--background-sub);
+        color: var(--text);
+        font-size: 20px;
+        text-transform: capitalize;
+        border: 3px solid var(--primary);
+        border-radius: 8px;
+    }
+
+    /* body */
+
+    /* header */
+    header {
+        justify-content: space-between;
+        padding: 20px 15%;
+
+        background-color: var(--background-sub);
+        border-bottom: solid 3px var(--primary);
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .logo {
+        gap: 10px;
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    /* navigation */
+    nav {
+        gap: 30px;
+    }
+
+    /* main */
+
+    /* deskripsi */
+    .deskripsi {
+        text-transform: uppercase;
+        font-size: 30px;
+        gap: 100px;
+    }
+
+    .deskripsi-button {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .img-deskripsi {
+        max-width: 700px;
+        height: auto
+    }
+
+    /* program */
+    .box-program {
+        height: 700px;
+        padding: 20px;
+        text-align: center;
+
+        background-color: var(--secondary);
+        color: var(--background);
+        font-size: 30px;
+        border-radius: 8px;
+    }
+
+    .img-program {
+        width: 300px;
+    }
+</style>
+
+<body>
+    <header class="container-flex">
+        <div class=" container-flex logo">
+            <img src="assets/img/logo.png" alt="">
+            <p>GO BLOG</p>
+        </div>
+
+        <nav class="container-flex">
+            <a href="">Menu</a>
+            <a href="">Pengaturan</a>
+            <a href="">Exit</a>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+
+    <main>
+        <!-- deskripsi -->
+        <section class="container container-flex">
+            <div class="container-flex deskripsi-button">
+                <p class="deskripsi">kamal never die adalah Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Deserunt blanditiis accusantium mollitia illo unde expedita omnis quae rem impedit cumque sapiente
+                    placeat, dicta rerum corrupti voluptatem laboriosam natus architecto corporis.</p>
+                <div class="container-flex">
+                    <button class="button">masuk</button>
+                    <button class="button">keluar</button>
+                </div>
+            </div>
+            <img class="img-deskripsi" src="assets/img/logo.png" alt="">
+        </section><br>
+
+        <!-- program -->
+        <section class="container container-flex">
+            <div class="box-program">
+                <img class="img-program" src="assets/img/html-dasar.png" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, praesentium veritatis! Quod quisquam
+                    saepe officiis minus aliquam magni suscipit, eius mollitia? Quod numquam inventore vel modi porro
+                    perspiciatis quae esse.</p>
+            </div>
+
+            <div class="box-program">
+                <img class="img-program" src="assets/img/css-dasar.png" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi obcaecati modi quos eveniet ipsum
+                    voluptatibus, odit tempore corrupti possimus asperiores nostrum hic similique, incidunt vel quod
+                    corporis. Eius, officia excepturi./p>
+            </div>
+
+            <div class="box-program">
+                <img class="img-program" src="assets/img/js-dasar.png" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum provident voluptatem unde alias
+                    recusandae maiores exercitationem voluptate sequi, reiciendis architecto et qui vero, error
+                    perferendis! Fuga ipsa explicabo laudantium quis?</p>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

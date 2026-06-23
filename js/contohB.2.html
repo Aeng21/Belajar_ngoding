@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let buah = ["apel", "jeruk", "mangga", "pisang"];
+
+      // 1. tampilkan semua isi array
+      for (let i = 0; i < buah.length; i++) {
+        console.log(buah[i]);
+      }
+
+      // 2. ganti "jeruk" jadi "anggur"
+      buah[1] = "anggur";
+
+      // 3. tambah "durian"
+      buah.push("durian");
+
+      // 4. tampilkan isi & index terakhir
+      let indexTerakhir = buah.length - 1; // karna index mulai dari 0 jadi harus dikurangi 1
+      console.log(indexTerakhir, buah[indexTerakhir]);
+
+      console.table(buah);
+
+
+
+      // contoh 2
+      let kelas = [
+        ["kamal", "riko", "saepul"],
+        ["budi", "andi", "eko"]
+      ];
+
+      // 1. tampilkan semua nama kelas pertama
+      for (let i = 0; i < kelas[0].length; i++) {
+        console.log(kelas[0][i]);
+      }
+
+      // 2. tampilkan nama "andi"
+      console.log(kelas[1][1]);
+
+      // 3. ganti "riko" jadi "wildan"
+      kelas[0][1] = "wildan";
+
+      // 4. tampilkan semua nama dari dua kelas
+      for (let i = 0; i < kelas.length; i++) {
+        for (let j = 0; j < kelas[i].length; j++) {
+          console.log(kelas[i][j]);
+        }
+      }
+
+      console.table(kelas);
+    </script>
+</body>
+</html>

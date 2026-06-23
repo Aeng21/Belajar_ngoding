@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projeck4</title>
+</head>
+<body>
+    <script>
+        function br(){
+            document.writeln("</br>")
+        }
+        function doc(isi){
+            document.writeln("<p>" + isi + "</p>")
+        }
+
+        let player = {
+            nama: "Hero",
+            health: 120,
+            attack: 20
+        }
+
+        let enemies = [
+            {nama:"slime", health: 30, attack: 5},
+            {nama: "goblin", health: 50, attack: 10},
+            {nama: "orc", health: 80, attack: 15}
+        ]
+ 
+        //nampilin semua player dan enemy
+        doc("DATA PLAYER")
+        for (let statusPlayer in player){
+        doc(`<p>${statusPlayer} : ${player[statusPlayer]}</p>`)
+        }
+        br()
+
+        doc(`DATA MUSUH`)
+        for (let statusMusuh of enemies){
+        doc(`nama : ${statusMusuh.nama}, health : ${statusMusuh.health} HP, attack : ${statusMusuh.attack} Damage`)
+        }
+        br()
+
+        //sistem battle
+        let musuh = prompt(`Masukan musuh yang mau dilawan:
+            1.Slime
+            2.Goblin
+            3.Orc
+            `)
+        musuh = parseInt(musuh)
+        doc(`Hero HP : ${player.health} VS ${enemies[musuh - 1].nama} HP : ${enemies[musuh - 1].health}`)
+        let urut = 0
+        while(player.health > 0){
+            urut++
+            enemies[musuh - 1].health -= player.attack
+            doc(`sesi ke-${urut} Hero HP : ${Math.max(0, player.health)} VS ${enemies[musuh - 1].nama} HP : ${Math.max(0, enemies[musuh - 1].health)}`)
+            if(enemies[musuh - 1].health <= 0){
+                doc(`HERO MENANG SELAMAT !!!`)
+                break
+            }
+            urut++
+            player.health -= enemies[musuh - 1].attack
+            doc(`sesi ke-${urut} Hero HP : ${Math.max(0, player.health)} VS ${enemies[musuh - 1].nama} HP : ${Math.max(0, enemies[musuh - 1].health)}`)
+            if(player.health <= 0){
+                doc(`HERO KALAH SILAHKAN COBA LAGI !!!`)
+                break
+            }
+
+        
+        }
+        br()
+
+        //SKIP MUSUH MATI
+        doc(`DATA BARU PLAYER DAN MUSUH`)
+        doc("DATA PLAYER")
+        while(player.health > 0){
+            doc(`nama : ${player.nama}`)
+            doc(`health : ${player.health}`)
+            doc(`attack : ${player.attack}`)
+
+            if (player.health <= 0){
+                doc(`SHE'S GONE`)
+                break
+            }
+            break
+        }
+        
+
+
+        doc(`DATA MUSUH`)
+        for (let i = 0;i < enemies.length;i++){
+            if(enemies[i].health <= 0){
+                continue
+            }
+        doc(`nama : ${enemies[i].nama}, health : ${enemies[i].health} HP, attack : ${enemies[i].attack} Damage`)
+        }
+        br()
+
+        //sistem dungean
+        //mengembalikan kesemula
+        player = {
+            nama: "Hero",
+            health: 120,
+            attack: 20
+        }
+
+        enemies = [
+            {nama:"slime", health: 30, attack: 5},
+            {nama: "goblin", health: 50, attack: 10},
+            {nama: "orc", health: 80, attack: 15}
+        ]
+        urut = 0
+
+
+        doc(`DONGEON READY`)
+
+        for (let ronde = 1; ronde <= 3; ronde++){
+            doc(`RONDE KE - ${ronde} DI MULAI`)
+            while(player.health > 0){
+                urut++
+                enemies[ronde - 1].health -= player.attack
+                doc(`ronde ke - ${ronde} sesi ke- ${urut} Hero HP : ${Math.max(0, player.health)} VS ${enemies[ronde - 1].nama} HP : ${Math.max(0, enemies[ronde - 1].health)}`)
+                if(player.health <= 0 || enemies[ronde - 1].health <= 0){
+                    urut = 0
+                    break
+                }
+                urut++
+                player.health -= enemies[ronde - 1].attack
+                doc(`ronde ke - ${ronde} sesi ke-${urut} Hero HP : ${Math.max(0, player.health)} VS ${enemies[ronde - 1].nama} HP : ${Math.max(0, enemies[ronde - 1].health)}`)
+                if(player.health <= 0 || enemies[ronde - 1].health <= 0){
+                    urut = 0
+                    break
+                }
+            }
+
+        }
+
+        
+    </script>
+</body>
+</html>

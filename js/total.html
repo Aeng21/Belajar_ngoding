@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List 1 File</title>
+
+  <!-- CSS langsung di sini -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    .container {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+    }
+
+    input {
+      width: 70%;
+      padding: 8px;
+    }
+
+    button {
+      padding: 8px;
+    }
+
+    li {
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .done {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>To-Do List</h1>
+
+    <input type="text" id="inputTask" placeholder="Tulis tugas...">
+    <button onclick="tambahTask()">Tambah</button>
+    <button onclick="hapusSemua()">Hapus Semua</button>
+
+    <ul id="list"></ul>
+  </div>
+
+  <!-- JS langsung di sini -->
+  <script>
+    const input = document.getElementById("inputTask");
+    const list = document.getElementById("list");
+
+    function tambahTask() {
+      const value = input.value.trim();
+
+      if (value === "") {
+        alert("Jangan kosong");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.textContent = value;
+
+      // klik = tandai selesai
+      li.onclick = function () {
+        li.classList.toggle("done");
+      };
+
+      // klik kanan = hapus
+      li.oncontextmenu = function (e) {
+        e.preventDefault();
+        li.remove();
+      };
+
+      list.appendChild(li);
+      input.value = "";
+    }
+
+    function hapusSemua() {
+      list.innerHTML = "";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .container {
+            display: grid;
+            grid-template-columns: [cl1] 100px [cl2] auto [cl3] 100px [cl4];
+            grid-template-rows:  [rl1] 50px [rl2] auto [rl3] 50px [rl4];
+            padding: 10px;
+        }
+
+        header {
+            background-color: aqua;
+            grid-column-start: cl1;
+            grid-column-end: cl4;
+            grid-row-start: rl1;
+            grid-row-end: rl2;
+        }
+
+        .content {
+            background-color: brown;
+            color: white;
+            grid-column-start: cl2;
+            grid-column-end: cl3;
+            grid-row-start: rl2;
+            grid-row-end: rl3;
+        }
+
+        footer {
+            background-color: aqua;
+            grid-column-start: cl1;
+            grid-column-end: cl4;
+            grid-row-start: rl3;
+            grid-row-end: rl4;
+        } */
+
+        /* atau lebih mudah pake grid-area */
+
+        .container {
+            display: grid;
+            grid-template-columns: 100px auto 100px;
+            grid-template-rows: 50px auto 50px;
+            grid-template-areas: 
+                "header header header"
+                ". content ."
+                "footer footer footer";
+            padding: 10px;
+            gap: 10px 10px;
+            
+        }
+
+        header {
+            background-color: aqua;
+            grid-area: header;
+        }
+
+        .content {
+            background-color: brown;
+            color: white;
+            grid-area: content;
+        }
+
+        footer {
+            background-color: aqua;
+            grid-area: footer;
+        }
+
+        .container1 {
+            display: grid;
+            height: 500px;
+            grid-template-columns: 100px 100px 100px;
+            grid-template-rows: 100px 100px 100px;
+            /* semua atribux flex kebanyakan bisa dipake grid seperti align dan justify */
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            /* cuma isi content yang berubah,karna gridline tidak berubah */
+            justify-items: center;
+        }
+
+         .content1 {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* align/justify-self */
+        .self {
+            align-self: flex-start;
+            justify-self: start;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>selamat datang ygy</h1>
+        </header>
+
+        <div class="content">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, cumque? Velit doloribus voluptatibus dicta, odio quam assumenda, aliquid quas corporis modi autem impedit vero nesciunt sed, nisi molestiae. Pariatur, rerum?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quibusdam doloribus a molestias obcaecati at laborum cum pariatur quam. Quibusdam numquam a alias assumenda ut fugiat voluptatum quod, neque architecto.</p>
+        </div>
+
+        <footer>
+            <h2>by aeng</h2>
+        </footer>
+    </div>
+
+    <div class="container1">
+        <div class="content1 self">1</div>
+        <div class="content1">2</div>
+        <div class="content1">3</div>
+        <div class="content1">4</div>
+        <div class="content1">5</div>
+        <div class="content1">6</div>
+        <div class="content1">7</div>
+        <div class="content1">8</div>
+        <div class="content1 self">9</div>
+    </div>
+    
+</body>
+</html>

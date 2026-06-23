@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function br(){
+            document.writeln("</br>")
+        }
+
+        for (let i = 1;i <= 5;i++) {
+            document.writeln(`<p> luar ${i} </p>`);
+            for (let j = 1;j <= 5;j++) {
+                document.writeln(`<p> dalam ${j} </p>`);
+            }
+        }
+
+        // let batas = prompt ("masukan angka yang diinginkan!")
+        // let j = 1
+        // for (let i = 1;i <= batas;i++){
+        //     if (i % 2 === 1){
+        //         if(i % 3 === 0){
+        //             document.writeln(`${j}-uhuy`)
+        //             br()
+        //             j++
+        //             j++
+        //             continue
+        //         } else if (i % 5 === 0){
+        //             document.write(`${j}-windah`)
+        //             br()
+        //             j++
+        //             j++
+        //             continue
+        //         }
+        //         //code AA
+        //         document.writeln(`${j}-${i}`)
+        //         br()
+        //         j++
+        //         j++
+        //         // code AA ini didalam block if %2 sehingga saat if %3 dan %5 tidak terpenuhi maka ini akan dijalankan
+        //     }
+        //     //tapi jika code AA tadi disimpan disini maka code sudah tidak terikat lagi dengan if %2 sehingga angka yang memenuhi syarat %2 bisa masuk ke block if selanjutnya (%3 dan %5)
+        //     //sedangkan yang tidak, akan tereksekusi semuanya di luar block if %2(dengan kata lain mau ganjil dan genap tetap akan terproses)
+        // }
+    </script>
+</body>
+</html>

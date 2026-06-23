@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            /* subgrid */
+            display: grid;
+            background-color: aqua;
+            grid-template-columns: 100px 100px 100px 100px 100px;
+            grid-template-rows: 100px 100px 100px 100px 100px;
+            width: 500px;
+            height: 500px;
+        }
+
+        .content1 {
+            background-color: burlywood;
+            display: grid;
+            grid-column: 2/5;
+            grid-row: 2/5;
+            /* subgrid manual */
+            /* grid-template-columns: 100px 100px 100px;
+            grid-template-rows: 100px 100px 100px; */
+            /* pake subgrid */
+            grid-template-columns: subgrid;
+            grid-template-rows: subgrid;
+
+
+        }
+
+        .inner1 {
+            background-color: blueviolet;
+            margin: 5px;
+            text-align: center;
+        }
+
+        /* multiple column seperti koran */
+        .container1 {
+            /* pake jumlah */
+            /* column-count: 3; */
+
+            /* pake ukuran jadi jumlah kolom gimana cukupnya*/
+            column-width: 200px;
+
+            column-gap: 10px;
+            column-rule: dotted 2px;
+
+        }
+
+
+        /* float */
+        .container2 {
+            background-color: red;
+        }
+
+        .image {
+            float: left;
+            background-color: blue;
+            height: 200px;
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content1">
+            <div class="inner1">1</div>
+            <div class="inner1">2</div>
+            <div class="inner1">3</div>
+            <div class="inner1">4</div>
+            <div class="inner1">5</div>
+            <div class="inner1">6</div>
+            <div class="inner1">7</div>
+            <div class="inner1">8</div>
+            <div class="inner1">9</div>
+        </div>
+    </div>
+
+    <div class="container1">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure molestiae quod eligendi aliquam aliquid omnis aut reiciendis ipsum facilis blanditiis debitis repudiandae iste minima, a qui cum! In, aperiam labore.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit unde fugit quasi alias perferendis. Architecto temporibus praesentium fugit accusantium, laudantium molestiae? Odit dicta eos enim quis veniam dolore aliquam commodi.</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum nemo modi expedita aliquam ducimus vero dolorum debitis quibusdam reiciendis, officiis magni totam odio consequatur temporibus maiores, ratione sapiente eos enim.</p>
+    </div>
+
+    <div class="container2">
+        <div class="image">
+            aazz
+        </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptatem ducimus temporibus totam quae, culpa omnis adipisci fugit earum sed deleniti, laborum qui, voluptatibus delectus enim rerum modi consequuntur quod.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate facilis laudantium magnam consectetur, magni dolor animi architecto molestiae earum? Inventore id ullam eaque odio autem perspiciatis expedita eligendi tempora vel.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis quas, nulla necessitatibus earum ipsa ad cupiditate suscipit maiores facere aliquam. Facilis laudantium veniam architecto dicta quos quas, eveniet vel nemo.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* normal flow.
+        layout :default dari html nya */
+
+        /* display: block atau inline */
+        .display {
+            /* inline-block = inline yang bisa diatur ukurannya */
+            display: inline-block;
+            width: 200px;
+            height: auto;
+            background-color: aqua;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        /* flexbox */
+        .container {
+            display: flex;
+            /* merubah arah flexnya */
+            flex-direction: row-reverse;
+            /* biar kalo item terlalu banyak bisa bikin baris baru */
+            flex-wrap: wrap;
+
+            /* order buat nmengubah urutan ditampilkannya item child  */
+        }
+
+        .content {
+            width: 200px;
+            background-color: red;
+            border: 2px black solid;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        
+        .container2 {
+            display: flex;
+        }
+
+        .content2 {
+            background-color: blue;
+            color: white;
+            border: 2px solid black;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        /* flex-grow untuk pembagian persenan layar(berkembang) */
+        .small {
+            flex-grow: 1;
+        }
+
+        .medium {
+            flex-grow: 2;
+        }
+
+        /* flex-shrink untuk pembagian persenan layar(menyusut)*/
+        .konten1 {
+            flex-shrink: 1;
+        }
+
+        .konten2 {
+            /* konten 2 ,2x lebih banyak menyusutnya */
+            flex-shrink: 2;
+        }
+
+        .konten3 {
+            flex-shrink: 0;
+             /* batas awal/minimal nya dan tidak boleh mengecil */
+            flex-basis: 300px;
+        }
+
+        /* justify content flexbox (horizontal)*/
+        .container3 {
+            display: flex;
+            justify-content: flex-end;
+            justify-content: space-between;
+        }
+
+        .content3 {
+            background-color: blueviolet;
+            color: white;
+            border: 2px black solid;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        /* align-item (vertikal)*/
+        .container4 {
+            background-color: yellow;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 500px;
+        }
+
+        .content4 {
+            background-color: blueviolet;
+            color: white;
+            border: 2px black solid;
+            padding: 5px;
+            margin: 5px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="display">
+        <h1>judul 1</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi quisquam magni facere explicabo dolorum. Quasi est repellendus hic ipsum, iure animi explicabo recusandae impedit laudantium voluptas ab ullam debitis illo.</p>
+    </div>
+
+    <div class="display">
+        <h1>judul 2</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi quisquam magni facere explicabo dolorum. Quasi est repellendus hic ipsum, iure animi explicabo recusandae impedit laudantium voluptas ab ullam debitis illo.</p>
+    </div>
+
+    <div class="container">
+        <div class="content" style="order: 2;">
+            <h1>ini konten 1</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quos excepturi deleniti, exercitationem facere placeat? Architecto beatae cum nam. Blanditiis mollitia non ex assumenda officia ipsum ducimus iure neque saepe.</p>
+        </div>
+        <div class="content" style="order: 4;">
+            <h1>ini konten 2</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quos excepturi deleniti, exercitationem facere placeat? Architecto beatae cum nam. Blanditiis mollitia non ex assumenda officia ipsum ducimus iure neque saepe.</p>
+        </div>  
+        <div class="content" style="order: 1;">
+            <h1>ini konten 3</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quos excepturi deleniti, exercitationem facere placeat? Architecto beatae cum nam. Blanditiis mollitia non ex assumenda officia ipsum ducimus iure neque saepe.</p>
+        </div>
+        <div class="content" style="order: 3;">
+            <h1>ini konten 4</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quos excepturi deleniti, exercitationem facere placeat? Architecto beatae cum nam. Blanditiis mollitia non ex assumenda officia ipsum ducimus iure neque saepe.</p>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="content2 small">A</div>
+        <div class="content2 medium">B</div>
+        <div class="content2 small">C</div>
+        <div class="content2 medium">D</div>
+    </div>
+
+    <div class="container2">
+        <div class="content2 konten1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis cum, vero ratione dicta quod aspernatur fugiat culpa itaque nemo quaerat commodi amet ea totam nihil architecto alias voluptatem quasi aliquid.</div>
+        <div class="content2 konten2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum corporis nihil, porro rerum doloribus omnis neque quis, nulla facere mollitia cupiditate veritatis animi soluta? Magni tempora rem et veritatis! Dolorem.</div>
+        <div class="content2 konten3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere dignissimos beatae rerum aperiam asperiores praesentium adipisci veniam possimus debitis, inventore officia. Incidunt, adipisci dolorum. Voluptatibus atque totam iure aspernatur dolorum.</div>
+    </div>
+
+    <div class="container3">
+        <div class="content3">A</div>
+        <div class="content3">B</div>
+        <div class="content3">C</div>
+        <div class="content3">D</div>
+    </div>
+
+    <div class="container4">
+        <div class="content4">elit. Asperiores sint minima veniam, sequi vero accusantium deserunt tempora molestiae, earum, deleniti vel nulla voluptatem ratione aliquid eligendi suscipit. Voluptas, et animi.</div>
+        <div class="content4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur voluptas quo aperiam explicabo voluptate est quisquam quasi aliquid animi harum dicta mollitia totam, quae suscipit vero dolores eaque veniam quod! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum mollitia corrupti cum at provident, autem assumenda sapiente quia asperiores aspernatur enim neque eligendi deserunt ea inventore reprehenderit tempore praesentium expedita.</div>
+        <div class="content4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur officiis laborum, consectetur ab inventore id cumque ea repellat ullam, nihil enim omnis magni quae fugit labore molestiae quidem. Consectetur, quasi.</div>
+    </div>
+
+</body>
+</html>
