@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Nama & Jurusan</title>
+</head>
+<body>
+
+<h2>Data Mahasiswa</h2>
+
+<form id="form">
+
+    <input type="text" id="nama" placeholder="Masukkan Nama">
+
+    <input type="text" id="jurusan" placeholder="Masukkan Jurusan">
+
+    <button type="submit">
+        Simpan
+    </button>
+
+</form>
+
+<hr>
+
+<ul id="list"></ul>
+
+<script>
+
+const form = document.getElementById("form");
+const nama = document.getElementById("nama");
+const jurusan = document.getElementById("jurusan");
+const list = document.getElementById("list");
+
+
+// ==========================
+// GET
+// ==========================
+async function getData(){
+
+    const res = await fetch("http://localhost:3000/todos");
+
+    const data = await res.json();
+
+    list.innerHTML = "";
+
+    data.forEach(item=>{
+
+        list.innerHTML += `
+        <li>
+
+            <b>Nama :</b> ${item.nama} <br>
+            <b>Jurusan :</b> ${item.jurusan} <br><br>
+
+            <button onclick="editData('${item.id}')">
+                Edit
+            </button>
+
+            <button onclick="deleteData('${item.id}')">
+                Hapus
+            </button>
+
+            <hr>
+
+        </li>
+        `;
+
+    });
+
+}
+
+
+
+// ==========================
+// POST
+// ==========================
+async function addData(nama,jurusan){
+
+    await fetch("http://localhost:3000/todos",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            nama:nama,
+            jurusan:jurusan
+
+        })
+
+    });
+
+}
+
+
+
+// ==========================
+// PUT
+// ==========================
+async function editData(id){
+
+    const namaBaru = prompt("Masukkan Nama Baru");
+
+    if(!namaBaru) return;
+
+    const jurusanBaru = prompt("Masukkan Jurusan Baru");
+
+    if(!jurusanBaru) return;
+
+    await fetch(`http://localhost:3000/todos/${id}`,{
+
+        method:"PUT",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            nama:namaBaru,
+            jurusan:jurusanBaru
+
+        })
+
+    });
+
+    getData();
+
+}
+
+
+
+// ==========================
+// DELETE
+// ==========================
+async function deleteData(id){
+
+    await fetch(`http://localhost:3000/todos/${id}`,{
+
+        method:"DELETE"
+
+    });
+
+    getData();
+
+}
+
+
+
+// ==========================
+// SUBMIT FORM
+// ==========================
+form.addEventListener("submit",async function(e){
+
+    e.preventDefault();
+
+    await addData(nama.value,jurusan.value);
+
+    nama.value="";
+    jurusan.value="";
+
+    getData();
+
+});
+
+
+
+// ==========================
+// LOAD DATA
+// ==========================
+getData();
+
+</script>
+
+</body>
+</html>
