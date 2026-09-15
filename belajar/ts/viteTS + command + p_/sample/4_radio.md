@@ -43,22 +43,22 @@ Di dalam `<form id="formEdit">` (modal edit):
 
 Buat helper `getRadioValue` — taruh di dekat bagian "1. KONFIGURASI & DEKLARASI ELEMEN DOM" (seluruh fungsi ini baru):
 ```ts
-function getRadioValue(name: string): string {   // <- BAGIAN INI (fungsi baru)
-    const checked = document.querySelector(`input[name="${name}"]:checked`) as HTMLInputElement | null;
+function getRadioValue(p_name: string): string {   // <- BAGIAN INI (fungsi baru)
+    const checked = document.querySelector(`input[name="${p_name}"]:checked`) as HTMLInputElement | null;
     return checked ? checked.value : '';
 }
 ```
 
 `openEditModal()` — tambah parameter `jenkel`, cari radio yang cocok lalu checklist (dengan null-check, jaga-jaga value tidak cocok opsi manapun):
 ```ts
-function openEditModal(id: string, nama: string, alamat: string, rank: string, jenkel: string) { // <- BAGIAN INI
-    currentEditId = id;
-    namaEdit.value = nama;
-    alamatEdit.value = alamat;
-    rankEdit.value = rank;
+function openEditModal(p_id: string, p_nama: string, p_alamat: string, p_rank: string, p_jenkel: string) { // <- BAGIAN INI
+    currentEditId = p_id;
+    namaEdit.value = p_nama;
+    alamatEdit.value = p_alamat;
+    rankEdit.value = p_rank;
 
     const radio = document.querySelector(                            // <- BAGIAN INI
-        `input[name="jenkelEdit"][value="${jenkel}"]`                // <- BAGIAN INI
+        `input[name="jenkelEdit"][value="${p_jenkel}"]`               // <- BAGIAN INI
     ) as HTMLInputElement | null;                                    // <- BAGIAN INI
 
     if (radio) radio.checked = true;                                 // <- BAGIAN INI (null-check, jaga-jaga value tidak cocok opsi manapun)
@@ -71,9 +71,9 @@ function openEditModal(id: string, nama: string, alamat: string, rank: string, j
 
 Di `renderData()`, bawa datanya lewat `data-attribute` di tombol Edit:
 ```ts
-<button class="action-btn edit-btn" data-id="${item.id}" data-nama="${item.nama}"
-    data-alamat="${item.alamat}" data-rank="${item.rank}"
-    data-jenkel="${item.jenisKelamin}">Edit</button>   // <- BAGIAN INI
+<button class="action-btn edit-btn" data-id="${p_item.id}" data-nama="${p_item.nama}"
+    data-alamat="${p_item.alamat}" data-rank="${p_item.rank}"
+    data-jenkel="${p_item.jenisKelamin}">Edit</button>   // <- BAGIAN INI
 ```
 
 Di event listener tombol Edit, teruskan ke `openEditModal`:
@@ -85,8 +85,8 @@ openEditModal(target.dataset.id!, target.dataset.nama!, target.dataset.alamat!,
 **Bagian "4. EVENT LISTENERS UTAMA"** — panggil `getRadioValue` sesuai `name` di HTML:
 ```ts
 // Form Tambah
-formTambah.addEventListener('submit', (e) => {
-    e.preventDefault();
+formTambah.addEventListener('submit', (p_e) => {
+    p_e.preventDefault();
     const nama = namaTambah.value.trim();
     const alamat = alamatTambah.value.trim();
     const rank = rankTambah.value.trim();
@@ -100,8 +100,8 @@ formTambah.addEventListener('submit', (e) => {
 });
 
 // Form Edit
-formEdit.addEventListener('submit', (e) => {
-    e.preventDefault();
+formEdit.addEventListener('submit', (p_e) => {
+    p_e.preventDefault();
     const nama = namaEdit.value.trim();
     const alamat = alamatEdit.value.trim();
     const rank = rankEdit.value.trim();
@@ -118,20 +118,20 @@ formEdit.addEventListener('submit', (e) => {
 
 Dan tambahkan parameter `jenisKelamin` di `createData`/`updateData` (bagian "2. FUNGSI API"):
 ```ts
-async function createData(nama: string, alamat: string, rank: string, jenisKelamin: string) { // <- BAGIAN INI
+async function createData(p_nama: string, p_alamat: string, p_rank: string, p_jenisKelamin: string) { // <- BAGIAN INI
     const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nama, alamat, rank, jenisKelamin })   // <- BAGIAN INI
+        body: JSON.stringify({ nama: p_nama, alamat: p_alamat, rank: p_rank, jenisKelamin: p_jenisKelamin })   // <- BAGIAN INI
     });
     // ...sisanya sama seperti aslinya
 }
 
-async function updateData(id: string, nama: string, alamat: string, rank: string, jenisKelamin: string) { // <- BAGIAN INI
-    const res = await fetch(`${API_URL}/${id}`, {
+async function updateData(p_id: string, p_nama: string, p_alamat: string, p_rank: string, p_jenisKelamin: string) { // <- BAGIAN INI
+    const res = await fetch(`${API_URL}/${p_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nama, alamat, rank, jenisKelamin })   // <- BAGIAN INI
+        body: JSON.stringify({ nama: p_nama, alamat: p_alamat, rank: p_rank, jenisKelamin: p_jenisKelamin })   // <- BAGIAN INI
     });
     // ...sisanya sama seperti aslinya
 }
@@ -149,18 +149,18 @@ export interface Player {
     jenisKelamin: string;   // <- BAGIAN INI
 }
 
-static async create(data: Omit<Player, 'id'>): Promise<number> {
+static async create(p_docu: Omit<Player, 'id'>): Promise<number> {
     const query = 'INSERT INTO player (nama, alamat, rank, jenisKelamin) VALUES (?, ?, ?, ?)';           // <- BAGIAN INI
     const [result] = await db.query<ResultSetHeader>(
-        query, [data.nama, data.alamat, data.rank, data.jenisKelamin]                                    // <- BAGIAN INI
+        query, [p_docu.nama, p_docu.alamat, p_docu.rank, p_docu.jenisKelamin]                             // <- BAGIAN INI
     );
     return result.insertId;
 }
 
-static async update(id: number, data: Omit<Player, 'id'>): Promise<number> {
+static async update(p_id: number, p_docu: Omit<Player, 'id'>): Promise<number> {
     const query = 'UPDATE player SET nama = ?, alamat = ?, rank = ?, jenisKelamin = ? WHERE id = ?';     // <- BAGIAN INI
     const [result] = await db.query<ResultSetHeader>(
-        query, [data.nama, data.alamat, data.rank, data.jenisKelamin, id]                                // <- BAGIAN INI
+        query, [p_docu.nama, p_docu.alamat, p_docu.rank, p_docu.jenisKelamin, p_id]                      // <- BAGIAN INI
     );
     return result.affectedRows;
 }
@@ -168,14 +168,14 @@ static async update(id: number, data: Omit<Player, 'id'>): Promise<number> {
 
 `controllers/playerController.ts`:
 ```ts
-static async create(req: Request, res: Response): Promise<void> {
-    const { nama, alamat, rank, jenisKelamin } = req.body as Omit<Player, 'id'>;   // <- BAGIAN INI
+static async create(p_req: Request, p_res: Response): Promise<void> {
+    const { nama, alamat, rank, jenisKelamin } = p_req.body as Omit<Player, 'id'>;   // <- BAGIAN INI
     if (!nama || !alamat || !rank || !jenisKelamin) {                             // <- BAGIAN INI
-        res.status(400).json({ success: false, message: 'Data harus diisi' });
+        p_res.status(400).json({ success: false, message: 'Data harus diisi' });
         return;
     }
     const id = await PlayerModel.create({ nama, alamat, rank, jenisKelamin });     // <- BAGIAN INI
-    res.status(201).json({ success: true, message: 'Player berhasil ditambahkan', data: { id, nama, alamat, rank, jenisKelamin } }); // <- BAGIAN INI
+    p_res.status(201).json({ success: true, message: 'Player berhasil ditambahkan', data: { id, nama, alamat, rank, jenisKelamin } }); // <- BAGIAN INI
 }
 ```
 
@@ -186,4 +186,4 @@ static async create(req: Request, res: Response): Promise<void> {
 Versi sebelumnya dari sample ini **lupa** menyebutkan 2 poin yang ditandai ⚠️ PENTING di atas. Kalau itu kelewat: dengan TypeScript strict, akan muncul error `Expected 5 arguments, but got 4` di pemanggilan `openEditModal()` — tapi kalau dijalankan sebagai JavaScript longgar (tanpa type-check ketat), aplikasinya tetap jalan tanpa error, hanya saja `jenkel` diterima `undefined` sehingga radio di modal edit **diam-diam tidak ter-checklist otomatis** saat tombol Edit diklik. Sudah diperbaiki di `4_radio.ts` — pastikan kedua bagian itu ikut disalin.
 
 ## Catatan lain
-- Sample ini tidak menampilkan kolom Jenis Kelamin di tabel (`renderData()` tidak menambah `<td>` untuk itu) — kalau kamu mau menampilkannya juga, tambahkan sendiri `<td>${item.jenisKelamin}</td>` dan header `<th>` yang sesuai.
+- Sample ini tidak menampilkan kolom Jenis Kelamin di tabel (`renderData()` tidak menambah `<td>` untuk itu) — kalau kamu mau menampilkannya juga, tambahkan sendiri `<td>${p_item.jenisKelamin}</td>` dan header `<th>` yang sesuai.

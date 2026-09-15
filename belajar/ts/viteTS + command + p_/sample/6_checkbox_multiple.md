@@ -37,17 +37,17 @@ Di dalam `<form id="formEdit">` (modal edit):
 
 Checkbox banyak pilihan TIDAK perlu deklarasi `getElementById` satu-satu. Buat 2 helper generik (fungsi baru) — taruh di dekat bagian "1. KONFIGURASI & DEKLARASI ELEMEN DOM":
 ```ts
-function getCheckboxValues(name: string): string[] {   // <- BAGIAN INI (fungsi baru)
-    const checkedBoxes = document.querySelectorAll(`input[name="${name}"]:checked`);
-    return Array.from(checkedBoxes).map(cb => (cb as HTMLInputElement).value);
+function getCheckboxValues(p_name: string): string[] {   // <- BAGIAN INI (fungsi baru)
+    const checkedBoxes = document.querySelectorAll(`input[name="${p_name}"]:checked`);
+    return Array.from(checkedBoxes).map(p_cb => (p_cb as HTMLInputElement).value);
 }
 
-function setCheckboxValues(name: string, values: string[]): void {   // <- BAGIAN INI (fungsi baru)
-    document.querySelectorAll(`input[name="${name}"]`).forEach(el => {
-        (el as HTMLInputElement).checked = false;
+function setCheckboxValues(p_name: string, p_values: string[]): void {   // <- BAGIAN INI (fungsi baru)
+    document.querySelectorAll(`input[name="${p_name}"]`).forEach(p_el => {
+        (p_el as HTMLInputElement).checked = false;
     });
-    values.forEach(val => {
-        const cb = document.querySelector(`input[name="${name}"][value="${val}"]`) as HTMLInputElement | null;
+    p_values.forEach(p_val => {
+        const cb = document.querySelector(`input[name="${p_name}"][value="${p_val}"]`) as HTMLInputElement | null;
         if (cb) cb.checked = true;
     });
 }
@@ -55,20 +55,20 @@ function setCheckboxValues(name: string, values: string[]): void {   // <- BAGIA
 
 **Bagian "2. FUNGSI API"**:
 ```ts
-async function createData(nama: string, alamat: string, rank: string, hobi: string[]) {   // <- BAGIAN INI
+async function createData(p_nama: string, p_alamat: string, p_rank: string, p_hobi: string[]) {   // <- BAGIAN INI
     const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nama, alamat, rank, hobi })   // <- BAGIAN INI
+        body: JSON.stringify({ nama: p_nama, alamat: p_alamat, rank: p_rank, hobi: p_hobi })   // <- BAGIAN INI
     });
     // ...sisanya sama seperti aslinya
 }
 
-async function updateData(id: string, nama: string, alamat: string, rank: string, hobi: string[]) {  // <- BAGIAN INI
-    const res = await fetch(`${API_URL}/${id}`, {
+async function updateData(p_id: string, p_nama: string, p_alamat: string, p_rank: string, p_hobi: string[]) {  // <- BAGIAN INI
+    const res = await fetch(`${API_URL}/${p_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nama, alamat, rank, hobi })   // <- BAGIAN INI
+        body: JSON.stringify({ nama: p_nama, alamat: p_alamat, rank: p_rank, hobi: p_hobi })   // <- BAGIAN INI
     });
     // ...sisanya sama seperti aslinya
 }
@@ -76,8 +76,8 @@ async function updateData(id: string, nama: string, alamat: string, rank: string
 
 **Bagian "3. FUNGSI UI & TAMPILAN"** — di `renderData()`, tampilkan hobi dengan `.join(', ')`; `data-attribute` tidak dipakai untuk array biasa, simpan JSON string-nya saja (perhatikan kutip tunggal di atribut HTML supaya tidak bentrok dengan `"` di JSON):
 ```ts
-<td>${item.hobi.join(', ')}</td>   // <- BAGIAN INI
-<button class="action-btn edit-btn" ... data-hobi='${JSON.stringify(item.hobi)}'>Edit</button>  // <- BAGIAN INI
+<td>${p_item.hobi.join(', ')}</td>   // <- BAGIAN INI
+<button class="action-btn edit-btn" ... data-hobi='${JSON.stringify(p_item.hobi)}'>Edit</button>  // <- BAGIAN INI
 ```
 
 Event listener tombol Edit — parse JSON dari dataset:
@@ -88,12 +88,12 @@ openEditModal(target.dataset.id!, target.dataset.nama!, target.dataset.alamat!,
 
 `openEditModal()` — isi pakai `setCheckboxValues()`:
 ```ts
-function openEditModal(id: string, nama: string, alamat: string, rank: string, hobi: string[]) {  // <- BAGIAN INI
-    currentEditId = id;
-    namaEdit.value = nama;
-    alamatEdit.value = alamat;
-    rankEdit.value = rank;
-    setCheckboxValues('hobiEdit', hobi);   // <- BAGIAN INI
+function openEditModal(p_id: string, p_nama: string, p_alamat: string, p_rank: string, p_hobi: string[]) {  // <- BAGIAN INI
+    currentEditId = p_id;
+    namaEdit.value = p_nama;
+    alamatEdit.value = p_alamat;
+    rankEdit.value = p_rank;
+    setCheckboxValues('hobiEdit', p_hobi);   // <- BAGIAN INI
     modalOverlay.classList.add('active');
 }
 ```
@@ -101,8 +101,8 @@ function openEditModal(id: string, nama: string, alamat: string, rank: string, h
 **Bagian "4. EVENT LISTENERS UTAMA"**:
 ```ts
 // Form Tambah
-formTambah.addEventListener('submit', (e) => {
-    e.preventDefault();
+formTambah.addEventListener('submit', (p_e) => {
+    p_e.preventDefault();
     const nama = namaTambah.value.trim();
     const alamat = alamatTambah.value.trim();
     const rank = rankTambah.value.trim();
@@ -115,8 +115,8 @@ formTambah.addEventListener('submit', (e) => {
 });
 
 // Form Edit
-formEdit.addEventListener('submit', (e) => {
-    e.preventDefault();
+formEdit.addEventListener('submit', (p_e) => {
+    p_e.preventDefault();
     const nama = namaEdit.value.trim();
     const alamat = alamatEdit.value.trim();
     const rank = rankEdit.value.trim();
@@ -156,31 +156,31 @@ static async getAll(): Promise<Player[]> {
     const query = 'SELECT * FROM player';
     const [rows] = await db.query<RowDataPacket[]>(query);
     // hobi di database adalah JSON string '["Gaming","Musik"]', parse ke Array
-    return rows.map(row => {                                                             // <- BAGIAN INI
+    return rows.map(p_row => {                                                           // <- BAGIAN INI
         let hobiArray: string[] = [];
         try {
-            hobiArray = typeof row.hobi === 'string' ? JSON.parse(row.hobi) : row.hobi;
+            hobiArray = typeof p_row.hobi === 'string' ? JSON.parse(p_row.hobi) : p_row.hobi;
         } catch {
             hobiArray = [];
         }
-        return { ...row, hobi: hobiArray };
+        return { ...p_row, hobi: hobiArray };
     }) as Player[];
 }
 
-static async create(data: Omit<Player, 'id'>): Promise<number> {
+static async create(p_docu: Omit<Player, 'id'>): Promise<number> {
     const query = 'INSERT INTO player (nama, alamat, rank, hobi) VALUES (?, ?, ?, ?)';    // <- BAGIAN INI
-    const hobiString = JSON.stringify(data.hobi);                                          // <- BAGIAN INI (array harus di-stringify)
+    const hobiString = JSON.stringify(p_docu.hobi);                                        // <- BAGIAN INI (array harus di-stringify)
     const [result] = await db.query<ResultSetHeader>(
-        query, [data.nama, data.alamat, data.rank, hobiString]                             // <- BAGIAN INI
+        query, [p_docu.nama, p_docu.alamat, p_docu.rank, hobiString]                       // <- BAGIAN INI
     );
     return result.insertId;
 }
 
-static async update(id: number, data: Omit<Player, 'id'>): Promise<number> {
+static async update(p_id: number, p_docu: Omit<Player, 'id'>): Promise<number> {
     const query = 'UPDATE player SET nama = ?, alamat = ?, rank = ?, hobi = ? WHERE id = ?';  // <- BAGIAN INI
-    const hobiString = JSON.stringify(data.hobi);                                          // <- BAGIAN INI
+    const hobiString = JSON.stringify(p_docu.hobi);                                        // <- BAGIAN INI
     const [result] = await db.query<ResultSetHeader>(
-        query, [data.nama, data.alamat, data.rank, hobiString, id]                         // <- BAGIAN INI
+        query, [p_docu.nama, p_docu.alamat, p_docu.rank, hobiString, p_id]                 // <- BAGIAN INI
     );
     return result.affectedRows;
 }
@@ -188,14 +188,14 @@ static async update(id: number, data: Omit<Player, 'id'>): Promise<number> {
 
 `controllers/playerController.ts`:
 ```ts
-static async create(req: Request, res: Response): Promise<void> {
-    const { nama, alamat, rank, hobi } = req.body as Omit<Player, 'id'>;   // <- BAGIAN INI
+static async create(p_req: Request, p_res: Response): Promise<void> {
+    const { nama, alamat, rank, hobi } = p_req.body as Omit<Player, 'id'>;   // <- BAGIAN INI
     if (!nama || !alamat || !rank) {
-        res.status(400).json({ success: false, message: 'Data harus diisi' });
+        p_res.status(400).json({ success: false, message: 'Data harus diisi' });
         return;
     }
     const id = await PlayerModel.create({ nama, alamat, rank, hobi: hobi ?? [] });   // <- BAGIAN INI
-    res.status(201).json({ success: true, message: 'Player berhasil ditambahkan', data: { id, nama, alamat, rank, hobi } }); // <- BAGIAN INI
+    p_res.status(201).json({ success: true, message: 'Player berhasil ditambahkan', data: { id, nama, alamat, rank, hobi } }); // <- BAGIAN INI
 }
 ```
 

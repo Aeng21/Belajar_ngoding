@@ -41,20 +41,20 @@ const emailEdit = document.getElementById('emailEdit') as HTMLInputElement;     
 
 **B. Bagian "2. FUNGSI API"** — tambah parameter `email` di `createData` & `updateData` (baris lain di dalam fungsi tetap sama seperti aslinya):
 ```ts
-async function createData(nama: string, alamat: string, rank: string, email: string) { // <- BAGIAN INI
+async function createData(p_nama: string, p_alamat: string, p_rank: string, p_email: string) { // <- BAGIAN INI
     const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nama, alamat, rank, email })   // <- BAGIAN INI
+        body: JSON.stringify({ nama: p_nama, alamat: p_alamat, rank: p_rank, email: p_email })   // <- BAGIAN INI
     });
     // ...sisanya sama seperti aslinya
 }
 
-async function updateData(id: string, nama: string, alamat: string, rank: string, email: string) { // <- BAGIAN INI
-    const res = await fetch(`${API_URL}/${id}`, {
+async function updateData(p_id: string, p_nama: string, p_alamat: string, p_rank: string, p_email: string) { // <- BAGIAN INI
+    const res = await fetch(`${API_URL}/${p_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nama, alamat, rank, email })   // <- BAGIAN INI
+        body: JSON.stringify({ nama: p_nama, alamat: p_alamat, rank: p_rank, email: p_email })   // <- BAGIAN INI
     });
     // ...sisanya sama seperti aslinya
 }
@@ -62,16 +62,16 @@ async function updateData(id: string, nama: string, alamat: string, rank: string
 
 **C. Bagian "3. FUNGSI UI & TAMPILAN"** — di dalam `renderData()`, tampilkan kolom baru & bawa datanya di tombol Edit:
 ```ts
-<td>${item.id}</td>
-<td>${item.nama}</td>
-<td>${item.alamat}</td>
-<td>${item.rank}</td>
-<td>${item.email}</td>   // <- BAGIAN INI
+<td>${p_index + 1}</td>
+<td>${p_item.nama}</td>
+<td>${p_item.alamat}</td>
+<td>${p_item.rank}</td>
+<td>${p_item.email}</td>   // <- BAGIAN INI
 <td>
-  <button class="action-btn edit-btn" data-id="${item.id}" data-nama="${item.nama}"
-      data-alamat="${item.alamat}" data-rank="${item.rank}"
-      data-email="${item.email}">Edit</button>   // <- BAGIAN INI
-  <button class="action-btn delete-btn" data-id="${item.id}">Hapus</button>
+  <button class="action-btn edit-btn" data-id="${p_item.id}" data-nama="${p_item.nama}"
+      data-alamat="${p_item.alamat}" data-rank="${p_item.rank}"
+      data-email="${p_item.email}">Edit</button>   // <- BAGIAN INI
+  <button class="action-btn delete-btn" data-id="${p_item.id}">Hapus</button>
 </td>
 ```
 
@@ -83,12 +83,12 @@ openEditModal(target.dataset.id!, target.dataset.nama!, target.dataset.alamat!,
 
 `openEditModal()` — tambahkan parameter & isi ke input edit:
 ```ts
-function openEditModal(id: string, nama: string, alamat: string, rank: string, email: string) { // <- BAGIAN INI
-    currentEditId = id;
-    namaEdit.value = nama;
-    alamatEdit.value = alamat;
-    rankEdit.value = rank;
-    emailEdit.value = email;   // <- BAGIAN INI
+function openEditModal(p_id: string, p_nama: string, p_alamat: string, p_rank: string, p_email: string) { // <- BAGIAN INI
+    currentEditId = p_id;
+    namaEdit.value = p_nama;
+    alamatEdit.value = p_alamat;
+    rankEdit.value = p_rank;
+    emailEdit.value = p_email;   // <- BAGIAN INI
     modalOverlay.classList.add('active');
 }
 ```
@@ -96,8 +96,8 @@ function openEditModal(id: string, nama: string, alamat: string, rank: string, e
 **D. Bagian "4. EVENT LISTENERS UTAMA"**:
 ```ts
 // Form Tambah
-formTambah.addEventListener('submit', (e) => {
-    e.preventDefault();
+formTambah.addEventListener('submit', (p_e) => {
+    p_e.preventDefault();
     const nama = namaTambah.value.trim();
     const alamat = alamatTambah.value.trim();
     const rank = rankTambah.value.trim();
@@ -110,8 +110,8 @@ formTambah.addEventListener('submit', (e) => {
 });
 
 // Form Edit
-formEdit.addEventListener('submit', (e) => {
-    e.preventDefault();
+formEdit.addEventListener('submit', (p_e) => {
+    p_e.preventDefault();
     const nama = namaEdit.value.trim();
     const alamat = alamatEdit.value.trim();
     const rank = rankEdit.value.trim();
@@ -137,18 +137,18 @@ export interface Player {
     email: string;   // <- BAGIAN INI
 }
 
-static async create(data: Omit<Player, 'id'>): Promise<number> {
+static async create(p_docu: Omit<Player, 'id'>): Promise<number> {
     const query = 'INSERT INTO player (nama, alamat, rank, email) VALUES (?, ?, ?, ?)';   // <- BAGIAN INI
     const [result] = await db.query<ResultSetHeader>(
-        query, [data.nama, data.alamat, data.rank, data.email]   // <- BAGIAN INI
+        query, [p_docu.nama, p_docu.alamat, p_docu.rank, p_docu.email]   // <- BAGIAN INI
     );
     return result.insertId;
 }
 
-static async update(id: number, data: Omit<Player, 'id'>): Promise<number> {
+static async update(p_id: number, p_docu: Omit<Player, 'id'>): Promise<number> {
     const query = 'UPDATE player SET nama = ?, alamat = ?, rank = ?, email = ? WHERE id = ?';   // <- BAGIAN INI
     const [result] = await db.query<ResultSetHeader>(
-        query, [data.nama, data.alamat, data.rank, data.email, id]   // <- BAGIAN INI
+        query, [p_docu.nama, p_docu.alamat, p_docu.rank, p_docu.email, p_id]   // <- BAGIAN INI
     );
     return result.affectedRows;
 }
@@ -156,18 +156,18 @@ static async update(id: number, data: Omit<Player, 'id'>): Promise<number> {
 
 `controllers/playerController.ts`:
 ```ts
-static async create(req: Request, res: Response): Promise<void> {
-    const { nama, alamat, rank, email } = req.body as Omit<Player, 'id'>;   // <- BAGIAN INI
+static async create(p_req: Request, p_res: Response): Promise<void> {
+    const { nama, alamat, rank, email } = p_req.body as Omit<Player, 'id'>;   // <- BAGIAN INI
     if (!nama || !alamat || !rank || !email) {                             // <- BAGIAN INI
-        res.status(400).json({ success: false, message: 'Data harus diisi' });
+        p_res.status(400).json({ success: false, message: 'Data harus diisi' });
         return;
     }
     const id = await PlayerModel.create({ nama, alamat, rank, email });     // <- BAGIAN INI
-    res.status(201).json({ success: true, message: 'Player berhasil ditambahkan', data: { id, nama, alamat, rank, email } }); // <- BAGIAN INI
+    p_res.status(201).json({ success: true, message: 'Player berhasil ditambahkan', data: { id, nama, alamat, rank, email } }); // <- BAGIAN INI
 }
 
-static async update(req: Request, res: Response): Promise<void> {
-    const { nama, alamat, rank, email } = req.body as Omit<Player, 'id'>;   // <- BAGIAN INI
+static async update(p_req: Request, p_res: Response): Promise<void> {
+    const { nama, alamat, rank, email } = p_req.body as Omit<Player, 'id'>;   // <- BAGIAN INI
     // ...validasi & pemanggilan PlayerModel.update sama pola-nya seperti create
 }
 ```
