@@ -1,0 +1,19 @@
+npm
+↓
+mengelola package / menjalankan script
+
+npx
+↓
+menjalankan executable milik package
+
+tsc = TypeScript Compiler.
+
+tsx memungkinkan kamu menjalankan TypeScript secara langsung, tanpa kamu harus menjalankan tsc terlebih dahulu secara manual.
+
+tsc --watch hanya fokus pada compile.
+
+Sedangkan tsc-watch bisa melakukan sesuatu setelah compile berhasil.(compile TS, hasilkan JS, jalankan JS)
+
+-   → opsi pendek
+--  → opsi panjang
+-D = --save-dev

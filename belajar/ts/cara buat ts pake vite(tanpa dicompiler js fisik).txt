@@ -1,0 +1,5 @@
+CARA MEMBUAT TS DARI AWAL DENGAN VITE (TANPA COMPILER KE JS FISIK)
+
+File index.html langsung memanggil file .ts -> Server Vite mengubah TS jadi JS di dalam memori (RAM) saat koding.
+
+npm create vite@latest . -- --template vanilla-ts

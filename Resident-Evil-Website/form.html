@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="asset/iconweb.png">
+    <title>Resident Evil Series</title>
+</head>
+<body>
+    <h1>REGISTRASI BARUDAX REVIL</h1>
+    <br>
+    <br>
+    <br>
+
+    <form name="formulin" action="ngawang.html" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>DATA DIRI</legend>
+            <label for="nama">Masukan Nama : 
+                <input type="text" name="nama" id="nama" list="namalist">
+            </label><br>
+
+            <label for="alamat">Masukan Alamat Lengkap : 
+                <input type="text" name="alamat" id="alamat">
+            </label><br>
+
+            <label for="tgllahir">Masukan Tanggal Lahir : 
+                <input type="date" name="tgllahir" id="tgllahir" value="2001-01-01" min="2000-01-01" max="2030-12-01">
+            </label><br>
+
+            <label for="warna">Masukan Warna Favorit : 
+                <input type="color" name="warna" id="warna">
+            </label><br>
+
+            <label for="telp">Masukan Nomber telepon : 
+                <input type="number" name="telp" id="telp">
+            </label><br>
+
+            <label>Masukan Jenis Kelamin : 
+                <input type="radio" name="jenkel" id="laki">Laki Laki
+                <input type="radio" name="jenkel" id="perempuan">Perempuan
+            </label><br>
+            
+            Masukan Sosial Media Yang Di Miliki : <br>
+            <label for="gm">
+                <input type="checkbox" name="gm" id="gm">Gmail
+            </label>
+
+            <label for="fb">
+                <input type="checkbox" name="fb" id="fb">Facebook
+            </label>
+
+            <label for="ig">
+                <input type="checkbox" name="ig" id="ig">instagram
+            </label>
+
+            <label for="wa">
+                <input type="checkbox" name="wa" id="wa">WhatApps
+            </label>
+            <br>
+
+            <label for="hobby">Masukan Hobby : <br>
+                <select name="hobby" id="hobby" multiple size="4">
+                    <optgroup label="akademik">
+                        <option value="membaca">Membaca</option>
+                        <option value="menulis">Menulis</option>
+                        <option value="menggambar" selected>Menggambar</option>
+                    </optgroup>
+
+                    <optgroup label="gaming">
+                        <option value="rpg">RPG</option>
+                        <option value="horror">HORROR</option>
+                        <option value="fps">FPS</option>
+                    </optgroup>
+
+                    <optgroup label="programmer">
+                        <option value="web dev">WEB DEVELOVER</option>
+                        <option value="game dev">GAME DEVELOVER</option>
+                        <option value="desainer ux ui">DESAINER UX UI</option>
+                    </optgroup>
+                </select>
+            </label><br>
+
+            <label for="upload">Masukan File Yang Akan Di Upload :
+            <input type="file" name="upload" id="upload">
+            </label><br>
+
+            <label for="komen">Isi Masukan Di Sini : <br>
+                <textarea name="komen" id="komen" cols="50" rows="8"></textarea>
+            </label><br>
+
+                <button type="submit" id="simpan">SIMPAN</button>
+                <button type="reset">RESET</button>
+
+        </fieldset>
+
+        <datalist id="namalist">
+            <option value="aa">aa</option>
+            <option value="dede">dede</option>
+            <option value="umi">umi</option>
+            <option value="kakang">kakang</option>
+            <option value="engkong">engkong</option>
+            <option value="abah">abah</option>
+            <option value="abang">abang</option>
+            <option value="mas">mas</option>
+
+        </datalist>
+
+
+    </form>
+</body>
+</html>

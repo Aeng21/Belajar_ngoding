@@ -1,0 +1,17 @@
+{
+  "name": "makhluk",
+  "version": "1.0.0",
+  "description": "aplikasi untuk mendaftarkan anda itu apa.",
+  "license": "ISC",
+  "author": "aeng",
+  "type": "module",
+  "main": "utama.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gas": "tsc-watch --onSuccess \"node keluar/utama.js\""
+  },
+  "devDependencies": {
+    "tsc-watch": "^7.2.1",
+    "typescript": "^7.0.2"
+  }
+}

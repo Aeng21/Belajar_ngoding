@@ -1,0 +1,14 @@
+di root folder nya.
+npm init -y
+
+Install modul concurrently di folder utama. Modul inilah pahlawan yang bisa menjalankan banyak perintah di satu terminal:
+npm install -D concurrently
+
+Ubah bagian "scripts" menjadi persis seperti ini:
+"scripts": {
+  "dev:front": "npm run dev --prefix app",
+  "dev:back": "npm run dev --prefix server",
+  "dev": "concurrently -c \"cyan,magenta\" \"npm run dev:front\" \"npm run dev:back\""
+}
+
+(app dan server adalah nama folder. app = front, server = back)

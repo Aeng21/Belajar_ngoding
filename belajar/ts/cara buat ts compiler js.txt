@@ -1,0 +1,61 @@
+CARA MEMBUAT TS DARI AWAL (COMPILER KE JS)
+
+File .ts -> Kamu compile manual dengan tsc -> Muncul file fisik .js ->
+File index.html memanggil file .js tersebut.
+
+npm init -y
+npm install -D typescript
+
+//Jalankan perintah berikut untuk membuat file konfigurasi:
+npx tsc --init
+
+
+hapus command baris ini :
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+
+lalu comman baris ini supaya hanya .js yang tercompiler :
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+ganti :
+"module": "nodenext",
+menjadi :
+"module": "ESnext",
+
+buat foler src manual.
+./src
+
+lalu buat file index.ts
+./src/index.ts
+
+masukan ini sebagai contoh :
+document.body.innerText= "halo dunia";
+
+
+=== OPSIONAL ===
+buat html index.html diroot
+tambahkan script
+<script type="module" src="./dist/index.js"></script>
+
+
+//mengcompiler ts ke js.
+npx tsc
+
+
+
+@@@ atau jika mau pakai watch untuk auto reload @@@
+npm init -y
+npm install -D typescript tsc-watch
+npx tsc --init
+
+
+"scripts": {
+  "dev": "tsc-watch --onSuccess \"node dist/index.js\""
+}
+
+buat folder dist dan src secara manual
+hilangkan komentar di ts confignya.
+
+

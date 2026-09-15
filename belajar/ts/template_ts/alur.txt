@@ -1,0 +1,50 @@
+Tentu! Untuk memahami alur kerja (backend flow) dari proyek ini, kamu bisa membayangkannya seperti sebuah restoran.
+
+Berikut adalah urutan alur backend dari awal sampai akhir beserta fungsinya. Kamu bisa mulai mempelajarinya dari urutan ini:
+
+1. src/server.ts (Gerbang Utama / Resepsionis)
+Ini adalah titik awal dari seluruh backend kamu. Semua permintaan (request) dari aplikasi (frontend) akan masuk ke sini pertama kali.
+
+Tugasnya: Menjalankan server, mengatur pengaturan dasar (seperti cors agar frontend bisa terhubung), dan mengarahkan tamu (request) ke rute yang tepat.
+Lihat file: 
+
+src/server.ts
+2. src/routes/ (Pengatur Arah / Pelayan)
+Setelah request masuk ke gerbang utama, request akan dilempar ke Routes. Ini seperti pelayan yang mencatat pesanan meja mana dan diarahkan ke dapur mana.
+
+Tugasnya: Mengecek URL (misalnya /api/player) dan metode HTTP-nya (GET, POST, PUT, DELETE), lalu menyerahkannya ke fungsi Controller yang sesuai.
+Lihat contoh: 
+
+src/routes/playerRoutes.ts
+3. src/controllers/ (Otak Logika / Koki)
+Ini adalah tempat dimana logika utama bekerja. Di sinilah pesanan diproses.
+
+Tugasnya: Menerima data dari pengguna, mengecek apakah datanya valid, meminta data ke Model (jika butuh database), dan mengirimkan balasan (response) kembali ke pengguna dalam bentuk JSON.
+Lihat contoh: Cari file seperti playerController.ts di folder src/controllers/.
+4. src/models/ (Penjaga Gudang Database)
+Controller tidak mengambil data langsung dari database, melainkan menyuruh Model.
+
+Tugasnya: Berkomunikasi langsung dengan database (mengambil, menyimpan, menghapus, atau mengubah data). Biasanya di sini kamu akan melihat query SQL seperti SELECT * FROM player.
+Lihat contoh: Cari file di folder src/models/.
+5. src/config/ (Pengaturan Alat / Koneksi)
+Ini adalah tempat untuk mengatur koneksi alat-alat luar, utamanya ke Database (MySQL).
+
+Tugasnya: Membaca file .env (yang berisi password dan nama database) lalu membuat jembatan koneksi agar Model bisa mengambil data.
+💡 Rangkuman Alur Kerja (Perjalanan 1 Request)
+Jika ada seseorang menekan tombol "Ambil Data Player" di website, begini alurnya:
+
+Frontend mengirim request ke http://localhost:3000/api/player.
+Masuk ke 
+
+src/server.ts
+, lalu diarahkan ke rute /api/player.
+Masuk ke 
+
+src/routes/playerRoutes.ts
+. Router melihat bahwa ini adalah metode GET, lalu meneruskannya ke PlayerController.getAll.
+Masuk ke Controller. Controller meminta tolong ke Model: "Tolong ambilkan semua data player dari database!"
+Masuk ke Model. Model menjalankan kueri SQL menggunakan koneksi dari Config.
+Model mengembalikan data tersebut ke Controller.
+Controller membungkus data tersebut dan mengirimkannya kembali ke Frontend sebagai balasan (response).
+Tips untuk mulai coding: Jika kamu ingin membuat fitur baru (misalnya fitur "Item/Barang"), urutan pengerjaannya biasanya dari belakang: Buat Database (Tabel) ➡️ Buat Model ➡️ Buat Controller ➡️ Buat Routes ➡️ Daftarkan di server.ts.
+
