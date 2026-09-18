@@ -1,0 +1,41 @@
+ctrl + shift + p
+snippets : configure snippets
+
+
+{
+  "doc writeln": {
+    "prefix": "doc",
+    "body": [
+      "document.writeln();"
+    ],
+    "description": "document.writeln"
+  },
+  "break": {
+    "prefix": "br",
+    "body": [
+      "document.writeln(\"</br>\");"
+    ],
+    "description": "document.writeln break"
+  },
+  "for in fix": {
+    "prefix": "fin",
+    "body": [
+      "for (const element in objeck) {",
+      "  const key = element as keyof typeof objeck;",
+      "  document.writeln(`${key} : ${objeck[key]}`);",
+      "  document.writeln(\"<br/>\");",
+      "}"
+    ],
+    "description": "for in yang sudah difix"
+  },
+  "for of fix": {
+    "prefix": "fof",
+    "body": [
+      "for (const element of array) {",
+      "  document.writeln(String(element));",
+      "  document.writeln(\"<br/>\");",
+      "}"
+    ],
+    "description": "for of yang sudah difix"
+  }
+}

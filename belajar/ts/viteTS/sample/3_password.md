@@ -149,8 +149,8 @@ static async create(data: Omit<Player, 'id'>): Promise<number> {
 }
 
 // Saat update, password TIDAK selalu diganti — hanya kalau field-nya diisi
-static async update(id: number, data: Omit<Player, 'id'>): Promise<number> {
-    if (data.password) {                                                                          // <- BAGIAN INI
+static async update(id: number, data: Omit<Player, 'id' | 'password'> & { password?: string }): Promise<number>
+{                                                                          // <- BAGIAN INI
         const hashed = await bcrypt.hash(data.password, 10);
         const query = 'UPDATE player SET nama = ?, alamat = ?, rank = ?, password = ? WHERE id = ?';
         const [result] = await db.query<ResultSetHeader>(query, [data.nama, data.alamat, data.rank, hashed, id]);

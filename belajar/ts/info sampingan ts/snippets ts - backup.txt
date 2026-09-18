@@ -1,0 +1,68 @@
+{
+  "doc writeln": {
+    "prefix": "doc",
+    "body": [
+      "document.writeln();"
+    ],
+    "description": "document.writeln"
+  },
+  "break": {
+    "prefix": "br",
+    "body": [
+      "document.writeln(\"</br>\");"
+    ],
+    "description": "document.writeln break"
+  },
+  "for in fix": {
+    "prefix": "fin",
+    "body": [
+      "for (const element in objeck) {",
+      "  const key = element as keyof typeof objeck;",
+      "}"
+    ],
+    "description": "for in yang sudah difix"
+  },
+  "for of fix": {
+    "prefix": "fof",
+    "body": [
+      "for (const element of array) {",
+      "}"
+    ],
+    "description": "for of yang sudah difix"
+  },
+
+  "paket $ bt": {
+    "prefix": "$$",
+    "body": [
+      "${}"
+    ],
+    "description": "paket $ didalam backtick"
+  },
+
+  "console.info": {
+    "prefix": "ci",
+    "body": [
+      "console.info()"
+    ],
+    "description": "console.info auto complete"
+  },
+
+  "console.table": {
+    "prefix": "ct",
+    "body": [
+      "console.table()"
+    ],
+    "description": "console.table auto complete"
+  },
+
+  "console.info check": {
+    "prefix": "cc",
+    "body": [
+      "console.info('\\x1b[42m\\x1b[37m MASUK KESINI \\x1b[0m')"
+    ],
+    "description": "\\x1b[ : instruksi format khusus,BUKAN teks biasa. 42m dan 37m : untuk format warnanya.  \\x1b[0m : reset keawal lagi",
+  }
+
+
+
+}
